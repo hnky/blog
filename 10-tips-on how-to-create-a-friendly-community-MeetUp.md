@@ -1,4 +1,5 @@
 # 10 tips on how to create a friendly community MeetUp
+![Header image](https://raw.githubusercontent.com/hnky/blog/master/images/header-community.jpg)
 Over the past years I had the privilege to run many MeetUps for different tech usergroups. In this article I want to share my experience on how I try to make my meetups welcoming and friendly for everyone. Many of the points are lessons learned others are tips and tricks I picked up during other MeetUps or during discussions.
 
 If you have any feedback or think important things are missing feel free to let me know. 
