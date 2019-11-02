@@ -50,5 +50,7 @@ At the venue guide your attendees to easily find the location within the buildin
 
 Always open the meetup yourself. During the opening mention the code of conduct, you don’t have to get in detail, but make clear where people can read it and make clear who is part of the organization of the event. 
 
+### Thank you!
 If you after reading this have questions, remarks or more tips please feel free to drop me a line.
+
 Have a great meetup and I really hope you adopt some of these tips in your meetup and make your meetups a safe and accessible place for the whole community.
