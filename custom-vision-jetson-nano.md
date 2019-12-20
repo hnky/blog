@@ -3,6 +3,7 @@
 Flash device
 Connect internet
 https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#next-resources
+https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit
 
 install curl
 install iot edge
@@ -61,6 +62,8 @@ docker run -it jitteam/devicequery ./deviceQuery
 ## 3 - Modify the container to run on the nano
 
 - Unzip the file downloaded from the Custom Vision Service.
+- Open the Dockerfile
+
 
 
 
