@@ -67,8 +67,12 @@ newgrp docker
 ```
 docker run -it jitteam/devicequery ./deviceQuery
 ```
+When the last line states: Result = PASS you can go to step 2, otherwise try follow the instructions on screen to enable GPU support in Docker.
+(https://raw.githubusercontent.com/hnky/blog/master/images/001.jpg)[GPU Support]
 
 ## 2 - Train your model and download your container
+
+
 
 
 ## 3 - Modify the container to run on the nano
