@@ -1,15 +1,3 @@
-
-
-Flash device
-Connect internet
-https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#next-resources
-https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit
-
-install curl
-install iot edge
-https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl
-
-
 # Running a GPU enabled Azure Custom Vision container on a NVidia Jetson nano
 
 In this article we will go through the steps needed to run Custom Vision Containers created with Microsoft Azure Custom Vision.
@@ -117,25 +105,23 @@ CMD python -u app.py
 - Replace the contents of the Docker file with this.
 ```
 FROM nvcr.io/nvidia/l4t-base:r32.2
-
 RUN apt-get update -y
 RUN apt-get install python3-pip -y
 RUN pip3 install -U pip
 
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev -y      
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python3-dev 
-#python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev -yq
+RUN DEBIAN_FRONTEND=noninteractive apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python3-dev python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev -yq
 
-RUN pip3 install --pre tensorflow-gpu==2.0.0 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42       
-RUN pip3 install -U numpy==1.17.3 flask pillow
+RUN pip3 install --pre tensorflow-gpu==2.0.0 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42
+RUN pip3 install flask pillow
 
 COPY app /app
 
-# By default, we run manual image resizing to maintain parity with CVS webservice prediction results.
-# If parity is not required, you can enable faster image resizing by uncommenting the following lines.
-# RUN echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list & apt update -y
-# RUN apt install -y libglib2.0-bin libsm6 libxext6 libxrender1 libjasper-dev libpng16-16 libopenexr23 libgstreamer1.0-0 libavcodec58 libavformat58 libswscale5 libqtgui4 libqt4-test libqtcore4
-# RUN pip install opencv-python
+# By default, we run manual image resizing to maintain parity with CVS webservice prediction results. If parity is not
+# required, you can enable faster image resizing by uncommenting the following lines. RUN echo "deb
+# http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list & apt update -y RUN apt
+# install -y libglib2.0-bin libsm6 libxext6 libxrender1 libjasper-dev libpng16-16 libopenexr23 libgstreamer1.0-0
+# libavcodec58 libavformat58 libswscale5 libqtgui4 libqt4-test libqtcore4 RUN pip install opencv-python
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-opencv
 
 # Expose the port
