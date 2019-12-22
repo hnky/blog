@@ -86,40 +86,57 @@ When you have created classification model
 ![Export Docker](https://raw.githubusercontent.com/hnky/blog/master/images/003.jpg)
 
 
-## 3 - Modify the container to run on the nano
+## 3 - Modify the Custom Vision container to run on the Jetson nano
 
 - Unzip the file downloaded from the Custom Vision Service.
 - Open the Dockerfile
-
-
-
-
+- The contents of the docker file looks like this.
 ```
-FROM nvcr.io/nvidia/l4t-base:r32.2
-RUN apt-get update -y 
-RUN apt-get install python3-pip -y 
-RUN pip3 install -U pip
-RUN DEBIAN_FRONTEND=noninteractive apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python-dev python3-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev -yq
-RUN pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
-RUN pip3 install --pre tensorflow-gpu==1.13.1 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 
+FROM python:3.7-slim
 
-#RUN apt update && apt install -y libjpeg62-turbo libopenjp2-7 libtiff5 libatlas-base-dev
-#RUN pip install absl-py six protobuf wrapt gast astor termcolor keras_applications keras_preprocessing --no-deps
-RUN pip3 install -U pillow
-#RUN pip install -U numpy==1.16.1 --no-deps
-RUN pip3 install flask 
-#RUN pip install tensorflow-gpu==1.13.1 --extra-index-url 'https://developer.download.nvidia.com/compute/redist/jp/v42' --no-deps
+RUN pip install -U pip
+RUN pip install numpy==1.17.3 tensorflow==2.0.0 flask pillow
 
+COPY app /app
 
 # By default, we run manual image resizing to maintain parity with CVS webservice prediction results.
 # If parity is not required, you can enable faster image resizing by uncommenting the following lines.
-#RUN echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list & apt update -y
-#RUN apt install -y  zlib1g-dev libjpeg-dev gcc libglib2.0-bin libsm6 libxext6 libxrender1 libjasper-dev libpng16-16 libopenexr23 libgstreamer1.0-0 libavcodec58 libavformat58 libswscale5 libqtgui4 libqt4-test libqtcore4
-#RUN pip3 install python3-opencv
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-opencv
+# RUN echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list & apt update -y
+# RUN apt install -y libglib2.0-bin libsm6 libxext6 libxrender1 libjasper-dev libpng16-16 libopenexr23 libgstreamer1.0-0 libavcodec58 libavformat58 libswscale5 libqtgui4 libqt4-test libqtcore4
+# RUN pip install opencv-python
+
+# Expose the port
+EXPOSE 80
+
+# Set the working directory
+WORKDIR /app
+
+# Run the flask server for the endpoints
+CMD python -u app.py
+```
+- Replace the contents of the Docker file with this.
+```
+FROM nvcr.io/nvidia/l4t-base:r32.2
+
+RUN apt-get update -y
+RUN apt-get install python3-pip -y
+RUN pip3 install -U pip
+
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev -y      
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python3-dev 
+#python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev -yq
+
+RUN pip3 install --pre tensorflow-gpu==2.0.0 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42       
+RUN pip3 install -U numpy==1.17.3 flask pillow
 
 COPY app /app
+
+# By default, we run manual image resizing to maintain parity with CVS webservice prediction results.
+# If parity is not required, you can enable faster image resizing by uncommenting the following lines.
+# RUN echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list & apt update -y
+# RUN apt install -y libglib2.0-bin libsm6 libxext6 libxrender1 libjasper-dev libpng16-16 libopenexr23 libgstreamer1.0-0 libavcodec58 libavformat58 libswscale5 libqtgui4 libqt4-test libqtcore4
+# RUN pip install opencv-python
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-opencv
 
 # Expose the port
 EXPOSE 80
@@ -129,7 +146,6 @@ WORKDIR /app
 
 # Run the flask server for the endpoints
 CMD python3 -u app.py
-
 ```
 
 
