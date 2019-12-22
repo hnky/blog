@@ -12,17 +12,24 @@ https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-
 
 # Running a GPU enabled Azure Custom Vision container on a NVidia Jetson nano
 
+In this article we will go through the steps needed to run Custom Vision Containers created with Microsoft Azure Custom Vision.
+An AI service and end-to-end platform for applying computer vision to your specific scenario. At the end of this walk through you are running your own models on a GPU enabled NVidia Jetson nano in a Docker Container.
 
 ## 1 - Setup your device
+First you have to setup your device with the lastest version and change some settings.
 
-Install OS
+### 1.1 Install the latest operating system.
+Install the latest version of the operating system on the Jetson Nano. The NVidia learn website has a great tutorial for that.
+[Follow the instructions here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit). When the device boots and the desktop appears on the screen you can continue with the next step.
 
-Set the Nano in high-power (10W) mode:
+### 1.2 Configure the Jetson nan.
+
+- Set the Nano in high-power (10W) mode:
 ```
 sudo nvpmodel -m 0
 ```
 
-Set the NVidia runtime as a default runtime in Docker. 
+- Set the NVidia runtime as a default runtime in Docker. 
 Your /etc/docker/daemon.json file should look like this.
 ```
 {
@@ -36,22 +43,22 @@ Your /etc/docker/daemon.json file should look like this.
 }
 ```
 
-Update your Nano to the latest versions
+- Update your Nano to the latest versions
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
 ```
 
-Add current user to docker group to use docker command without sudo, following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
+- Add current user to docker group to use docker command without sudo, following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
 The required commands are:
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-Reboot your device
+- Reboot your device
 
-Test you GPU support
+- Test you GPU support
 ```
 docker run -it jitteam/devicequery ./deviceQuery
 ```
