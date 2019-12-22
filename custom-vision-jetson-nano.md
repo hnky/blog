@@ -68,11 +68,22 @@ newgrp docker
 docker run -it jitteam/devicequery ./deviceQuery
 ```
 When the last line states: Result = PASS you can go to step 2, otherwise try follow the instructions on screen to enable GPU support in Docker.
-(https://raw.githubusercontent.com/hnky/blog/master/images/001.jpg)[GPU Support]
+![GPU Support](https://raw.githubusercontent.com/hnky/blog/master/images/001.jpg)
+
 
 ## 2 - Train your model and download your container
 
+Create your classification model using the Microsoft Azure Custom Vision Service.
+- [Use Python to create a classificationmode](https://www.henkboelman.com/articles/create-your-first-model-with-azure-custom-vision-and-python/)
+- [Create classification model through the interface](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)
 
+When you have created classification model
+- Go to latest interation 
+- Click on export (If export is disabled, make sure you have trained using a 'compact' domain)
+- Select Docker
+- Choose for the Linux download.
+
+![Export Docker](https://raw.githubusercontent.com/hnky/blog/master/images/002.jpg)
 
 
 ## 3 - Modify the container to run on the nano
