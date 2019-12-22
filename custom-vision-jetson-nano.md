@@ -165,3 +165,4 @@ docker buildx build --platform linux/aarch64 -t myregistry.azurecr.io/mycustomvi
 ### References
 - https://medium.com/jit-team/building-a-gpu-enabled-kubernets-cluster-for-machine-learning-with-nvidia-jetson-nano-7b67de74172a
 - https://github.com/jit-team/jetson-nano/tree/master/docker/jetson-nano-tf-gpu
+- https://github.com/janza/docker-python3-opencv/blob/master/Dockerfile
