@@ -148,9 +148,34 @@ WORKDIR /app
 CMD python3 -u app.py
 ```
 
+### Build and run the container directly on the device
+- Transfer the files to the Jetson Nano
+- Open a SSH session with the Jetson Nano
+- Build the container
+```
+docker build . -t mycustomvision
+```
+- Run the container
+```
+docker run -o 127.0.0.1:80:80 mycustomvision
+```
 
+### Build the container on Windows 10 and run on the device
+You can build the container on Windows 10 and push the image to an Azure Container registery. On the device you can pull that container from the registery and run it on your device.
+
+#### Azure Container Registry
+- Create an Azure Container Registry (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+- On the Windows Machine login to the registry.
+```
+docker login myregistry.azurecr.io
+```
+- On Windows 10 you can build the docker image using the buildx command. To enable this [use this tutorial](https://docs.docker.com/buildx/working-with-buildx/).
+```
+docker buildx build --platform linux/aarch64 -t myregistry.azurecr.io/mycustomvision --load .
+```
 
 
 
 ### References
 - https://medium.com/jit-team/building-a-gpu-enabled-kubernets-cluster-for-machine-learning-with-nvidia-jetson-nano-7b67de74172a
+- https://github.com/jit-team/jetson-nano/tree/master/docker/jetson-nano-tf-gpu
