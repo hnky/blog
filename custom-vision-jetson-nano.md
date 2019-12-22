@@ -83,7 +83,7 @@ When you have created classification model
 - Select Docker
 - Choose for the Linux download.
 
-![Export Docker](https://raw.githubusercontent.com/hnky/blog/master/images/002.jpg)
+![Export Docker](https://raw.githubusercontent.com/hnky/blog/master/images/003.jpg)
 
 
 ## 3 - Modify the container to run on the nano
