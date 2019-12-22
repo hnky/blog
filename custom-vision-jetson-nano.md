@@ -24,6 +24,11 @@ Install the latest version of the operating system on the Jetson Nano. The NVidi
 
 ### 1.2 Configure the Jetson nan.
 
+- Disable the UI 
+```
+sudo systemctl set-default multi-user.target
+```
+
 - Set the Nano in high-power (10W) mode:
 ```
 sudo nvpmodel -m 0
