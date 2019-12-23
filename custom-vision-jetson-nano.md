@@ -1,3 +1,5 @@
+**status: work in progress**
+
 # Running a GPU enabled Azure Custom Vision container on a NVidia Jetson nano
 
 In this article we will go through the steps needed to run Custom Vision Containers created with Microsoft Azure Custom Vision.
