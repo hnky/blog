@@ -166,3 +166,4 @@ docker buildx build --platform linux/aarch64 -t myregistry.azurecr.io/mycustomvi
 - https://medium.com/jit-team/building-a-gpu-enabled-kubernets-cluster-for-machine-learning-with-nvidia-jetson-nano-7b67de74172a
 - https://github.com/jit-team/jetson-nano/tree/master/docker/jetson-nano-tf-gpu
 - https://github.com/janza/docker-python3-opencv/blob/master/Dockerfile
+- https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-edge-scenarios/send_message_to_output.py
