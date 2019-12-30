@@ -135,8 +135,6 @@ WORKDIR /app
 CMD python -u app.py
 ```
 
-
-
 - Replace the contents of the Docker file with this.
 ```
 FROM nvcr.io/nvidia/l4t-base:r32.2
@@ -163,17 +161,17 @@ WORKDIR /app
 CMD python3 -u app.py
 ```
 
-### Build and run the container directly on the device
-- Transfer the files to the Jetson Nano
-- Open a SSH session with the Jetson Nano
 - Build the container
 ```
 docker build . -t mycustomvision
 ```
+
 - Run the container
 ```
 docker run -o 127.0.0.1:80:80 mycustomvision
 ```
+
+
 
 ### Build the container on Windows 10 and run on the device
 You can build the container on Windows 10 and push the image to an Azure Container registery. On the device you can pull that container from the registery and run it on your device.
