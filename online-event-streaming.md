@@ -20,6 +20,11 @@ The device has a HDMI input port and HDMI output port. The only thing you have t
 
 
 ### Audio from the presenter(s)
+When streaming a session the audio is an essential thing, you can ofcourse use the microphone from your laptop or the camera, but the change is very big that you audio is going to be very low in quality.
+
+There are many different typos of mi
+
+* [](http://www.saramonic.com/product/blink500-b2txtxrx/)
 
 ### Video of the stage
 
