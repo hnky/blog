@@ -1,9 +1,10 @@
 **status: work in progress**
 
 # Running a GPU enabled Azure Custom Vision container on a NVidia Jetson nano
+In this article we will go through the steps needed to run computer vision containers created with Microsoft Azure Custom Vision.
+An AI service and end-to-end platform for applying computer vision to your specific scenario. 
 
-In this article we will go through the steps needed to run Custom Vision Containers created with Microsoft Azure Custom Vision.
-An AI service and end-to-end platform for applying computer vision to your specific scenario. At the end of this walk through you are running your own models on a GPU enabled NVidia Jetson nano in a Docker Container.
+At the end of this walk through you are running your own models on a GPU enabled NVidia Jetson nano in a Docker Container.
 
 ## 1 - Setup your device
 First you have to setup your device with the lastest version and change some settings.
@@ -12,7 +13,10 @@ First you have to setup your device with the lastest version and change some set
 Install the latest version of the operating system on the Jetson Nano. The NVidia learn website has a great tutorial for that.
 [Follow the instructions here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit). When the device boots and the desktop appears on the screen you can continue with the next step.
 
-### 1.2 Configure the Jetson nan.
+### 1.2 Configure the Jetson nano.
+Before we can run the Docker containers created by the Custom Vision service we have to chance some settings on the Nano. 
+
+Connect to the Nano through SSH or open a terminal.
 
 - Disable the UI 
 ```
@@ -38,14 +42,13 @@ Your /etc/docker/daemon.json file should look like this.
 }
 ```
 
-- Update your Nano to the latest versions
+- Update your Nano OS and packages to the latest versions
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
 ```
 
 - Add current user to docker group to use docker command without sudo, following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
-The required commands are:
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
