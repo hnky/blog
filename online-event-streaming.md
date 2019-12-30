@@ -21,3 +21,7 @@ The device has a HDMI input port and HDMI output port. The only thing you have t
 ### Audio from the presenter(s)
 
 ### Video of the stage
+
+## Control center
+
+Running https://streamlabs.com/streamlabs-obs
