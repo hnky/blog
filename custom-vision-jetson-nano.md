@@ -162,7 +162,7 @@ CMD python3 -u app.py
 ```
 
 ### Build, run and test the container
-No that the DockerFile contains the configugration so the container is capable of running the TensorFlow with GPU support on ARM64 device we can build and run the container.
+Now that the DockerFile contains the configugration so the container is capable of running the TensorFlow with GPU support on ARM64 device we can build and run the container.
 
 - Build the container (this will take while)
 ```
@@ -180,15 +180,24 @@ curl -X POST http://127.0.0.1/url -d '{ "url": "https://github.com/hnky/blog/raw
 ```
 
 
-#### Azure Container Registry
+## 4 - Push the container to an Azure Container Registry
+When you are done and happy with your container you can push the container to an Azure Container Registry so you can use it later on.
+
 - Create an Azure Container Registry (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?WT.mc_id=AI4DEV02-blog-heboelma)
-- On the Windows Machine login to the registry.
+
+- Login to the registry.
 ```
 docker login myregistry.azurecr.io
 ```
-- On Windows 10 you can build the docker image using the buildx command. To enable this [use this tutorial](https://docs.docker.com/buildx/working-with-buildx/).
+
+- Build the container with the right tag
 ```
-docker buildx build --platform linux/aarch64 -t myregistry.azurecr.io/mycustomvision --load .
+docker build . -t  myregistry.azurecr.io/mycustomvision
+```
+
+- Push the container to the registry
+```
+docker push myregistry.azurecr.io/mycustomvision
 ```
 
 
