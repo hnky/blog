@@ -59,11 +59,11 @@ Not a requirement, but it is nice to add a video stream from the presenter telli
 
 ## Total costs
 
-| Item |  Costs |  Amazon | Coolblue |
+| Item |  Costs |  Amazon | Netherlands |
 | -- |  -- |  -- | -- |
-| Elgate Capture HD60s | From 180$ | [Buy on Amazon](https://www.amazon.com/Elgato-Game-Capture-HD60-PlayStation/dp/B01DRWCOGA/)
-| Saramonic Blink 500 | From 240$ | [Buy on Amazon](https://www.amazon.com/Saramonic-Ultracompact-Dual-channel-Microphone-Transmitters/dp/B07Z2LRDQX/)
-| Microsoft HD Lifecam Studio | 60$ | [Buy on Amazon](https://www.amazon.com/Microsoft-LifeCam-Studio-1080p-Webcam/dp/B0042X8NT6)
+| Elgate Capture HD60s | From 180$ | [Buy on Amazon](https://www.amazon.com/Elgato-Game-Capture-HD60-PlayStation/dp/B01DRWCOGA/) | [Buy on Coolblue](https://www.coolblue.nl/product/708429/elgato-game-capture-hd60-s.html)
+| Saramonic Blink 500 | From 240$ | [Buy on Amazon](https://www.amazon.com/Saramonic-Ultracompact-Dual-channel-Microphone-Transmitters/dp/B07Z2LRDQX/) | [Buy on Bol.com](https://www.bol.com/nl/p/saramonic-duo-lavalier-microfoon-draadloos-blink-500-b2/9200000127214177/)
+| Microsoft HD Lifecam Studio | 60$ | [Buy on Amazon](https://www.amazon.com/Microsoft-LifeCam-Studio-1080p-Webcam/dp/B0042X8NT6) | [Buy on Bol.com](https://www.bol.com/nl/p/microsoft-lifecam-studio-for-business-zakelijke-webcam/1003004011476624/)
 
 
 ## Control center
