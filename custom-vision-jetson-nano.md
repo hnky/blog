@@ -63,13 +63,23 @@ docker run -it jitteam/devicequery ./deviceQuery
 When the last line states: Result = PASS you can go to step 2, otherwise try follow the instructions on screen to enable GPU support in Docker.
 ![GPU Support](https://raw.githubusercontent.com/hnky/blog/master/images/001.jpg)
 
+Now you are ready to run Docker containers that support Tensorflow with GPU.
 
 ## 2 - Train your model and download your container
-Create your classification model using the Microsoft Azure Custom Vision Service.
-- [Use Python to create a classificationmode](https://www.henkboelman.com/articles/create-your-first-model-with-azure-custom-vision-and-python/)
+With Azure Custom Vision you can create computer vision models and export this models to run localy on your machine. One of the export options is to get Docker container that exposes the model through an API. If you exporting the container there are 3 types you can coose from, Windows, Linux and Raspberry Pi. The only problem is that none of them use GPU support on an ARM64 device. but with a few tweaks in the the .DockerFile we can enable this and run the container on the Nano.
+
+But first let's create a model and download the docker container. You can create your own model using the tutorials below or download my unmodified container.
+
+#### Download sample container
+This zip files containers a simple model that can classify Marge and Homer Simpson lego figures.
+[Download]()
+
+#### Create your model 
+Create your classification model using the Microsoft Azure Custom Vision.
+- [Use Python to create a classification model](https://www.henkboelman.com/articles/create-your-first-model-with-azure-custom-vision-and-python/)
 - [Create classification model through the interface](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier?WT.mc_id=AI4DEV02-blog-heboelma)
 
-When you have created classification model
+When you have created classification model:
 - Go to latest interation 
 - Click on export (If export is disabled, make sure you have trained using a 'compact' domain)
 - Select Docker
@@ -79,7 +89,6 @@ When you have created classification model
 
 
 ## 3 - Modify the Custom Vision container to run on the Jetson nano
-
 - Unzip the file downloaded from the Custom Vision Service.
 - Open the Dockerfile
 - The contents of the docker file looks like this.
