@@ -71,7 +71,7 @@ With Azure Custom Vision you can create computer vision models and export this m
 But first let's create a model and download the docker container. You can create your own model using the tutorials below or download my unmodified container.
 
 #### Download sample container
-This zip files containers a simple model that can classify Marge and Homer Simpson lego figures.
+This zip files contains a simple model that can classify Marge and Homer Simpson lego figures.
 [Download](https://github.com/hnky/blog/raw/master/downloads/HomerOrMarge.DockerFile.Linux.zip)
 
 #### Create your model 
