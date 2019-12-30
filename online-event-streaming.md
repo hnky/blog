@@ -2,7 +2,6 @@
 
 The past year we have been experimenting with streaming our events and create video's afterwards. In this article you can find our setup that we found works the best, with the least setup time and is very portable.
 
-
 ## Capture the input streams. 
 To setup a live stream you need to capture 3 input streams, combine them using a computer (control center) running broadcast software (Streamlabs OBS) to stream it to a online plaform (YouTube).
 
@@ -11,13 +10,12 @@ To setup a live stream you need to capture 3 input streams, combine them using a
 * Audio from the presenter(s), for this we use Saramonic blink500 wireless microphones.
 * Video of the stage/presenter(s), for this we use a HD Webcam.
 
-
 #### Our setup
 This is how our setup looks like when everything is connected.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/fullsetup.jpg)
 
-Let's zoom into the specific parts that we need to record.
+Let's zoom into the specific parts that we need to capture.
 
 ### Screen from the presenter
 To capture the screen from the presenter you need to add a device that will capture the output from the laptop. The easiest way is to use a 'game capture device like the Elgate Capture HD60s.
