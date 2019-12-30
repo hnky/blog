@@ -1,6 +1,6 @@
 # High quality live streaming of your events on a shoestring
 
-The past year our usergroup has been experimenting with streaming events and creating video's afterwards. In this article you find the setup that we found working the best for us. We looked at setup time, portability of set, quality of stream and the costs. The setup we landed on consists of 3 parts that you can buy for around 500 dollars.
+The past year our usergroup has been experimenting with streaming events and creating videos afterwards. In this article you find the setup that we found working the best for us. We looked at setup time, portability of set, quality of stream and the costs. The setup we landed on consists of 3 parts that you can buy for around 500 dollars.
 
 To setup a live stream you need to capture 3 input streams, combine them using a computer (control center) running broadcast software (Streamlabs OBS) to stream it to a online plaform (YouTube).
 
@@ -30,12 +30,12 @@ The device has a HDMI input port and HDMI output port. The only thing you have t
 * [Official website of the Elgate Capture HD60s](https://www.elgato.com/en/gaming/game-capture-hd60-s)
 
 ### Audio from the presenter(s)
-When streaming a session the audio is an essential thing, you can ofcourse use the microphone from your laptop or the camera, but the chance is very big that your audio is going to be very low in quality. 
+When streaming a session the audio is an essential thing, you can of-course use the microphone from your laptop or the camera, but the chance is very big that your audio is going to be very low in quality. 
 
 After a long search and trying out a few options we landend on the Saramonic blink500 wireless microphones, this is why:
-* Extreemly portable. (They are very small)
+* Extremely portable. (They are very small)
 * Using 2.4GHz Channel. This frequency is allowed everywhere!
-* You can use in the in-build microphone in the sender (Just clip-on and go) or connect a lavelier microphone to the receiver for better quality.
+* You can use in the build-in microphone in the sender (Just clip-on and go) or connect a lavelier microphone to the receiver for better quality.
 * No mixer needed, just connect to a line-in (mini-jack)
 * It comes with 2 senders and 1 receiver. This is perfect if you have 2 presenters.
 
@@ -68,6 +68,7 @@ On the control all the streams come together. We use Streamlabs OBS to combine t
 | Saramonic Blink 500 | From 240$ | [Buy on Amazon](https://www.amazon.com/Saramonic-Ultracompact-Dual-channel-Microphone-Transmitters/dp/B07Z2LRDQX/) | [Buy on Bol.com](https://www.bol.com/nl/p/saramonic-duo-lavalier-microfoon-draadloos-blink-500-b2/9200000127214177/)
 | Microsoft HD Lifecam Studio | 60$ | [Buy on Amazon](https://www.amazon.com/Microsoft-LifeCam-Studio-1080p-Webcam/dp/B0042X8NT6) | [Buy on Bol.com](https://www.bol.com/nl/p/microsoft-lifecam-studio-for-business-zakelijke-webcam/1003004011476624/)
 
-Thanks for reading and I hope it is helpfull. If you have any comments or add-ons to this article? Feel free to [submit your comments or do a pull-request on GitHub](https://github.com/hnky/blog/blob/master/online-event-streaming.md).
+Thanks for reading and I hope it is helpful. 
+If you have any comments or add-ons to this article? Feel free to [submit your comments or do a pull-request on GitHub](https://github.com/hnky/blog/blob/master/online-event-streaming.md).
 
 
