@@ -72,25 +72,44 @@ But first let's create a model and download the docker container. You can create
 
 #### Download sample container
 This zip files containers a simple model that can classify Marge and Homer Simpson lego figures.
-[Download]()
+[Download](https://github.com/hnky/blog/raw/master/downloads/HomerOrMarge.DockerFile.Linux.zip)
 
 #### Create your model 
 Create your classification model using the Microsoft Azure Custom Vision.
 - [Use Python to create a classification model](https://www.henkboelman.com/articles/create-your-first-model-with-azure-custom-vision-and-python/)
 - [Create classification model through the interface](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier?WT.mc_id=AI4DEV02-blog-heboelma)
 
-When you have created classification model:
+When you have created your classification model:
 - Go to latest interation 
 - Click on export (If export is disabled, make sure you have trained using a 'compact' domain)
 - Select Docker
 - Choose for the Linux download.
+- Copy the download link (right click on the download button)
 
 ![Export Docker](https://raw.githubusercontent.com/hnky/blog/master/images/003.jpg)
 
+At the end of this step you have the link to a zip file containing the model, code and DockerFile.
+
 
 ## 3 - Modify the Custom Vision container to run on the Jetson nano
+Now we have the zip file containing the DockerFile and model we can download and modify it so it can run on the Jetson Nano. It is the easiest to do the steps below through a SSH session.
+
+- Download the zip file
+```
+wget -O customvision.zip "https://github.com/hnky/blog/raw/master/downloads/HomerOrMarge.DockerFile.Linux.zip"
+```
+You can replace the link to the zip file with the link to your container.
+
 - Unzip the file downloaded from the Custom Vision Service.
+```
+unzip customvision.zip -d customvision
+```
 - Open the Dockerfile
+```
+cd customvision
+nano Dockerfile
+```
+
 - The contents of the docker file looks like this.
 ```
 FROM python:3.7-slim
@@ -115,6 +134,9 @@ WORKDIR /app
 # Run the flask server for the endpoints
 CMD python -u app.py
 ```
+
+
+
 - Replace the contents of the Docker file with this.
 ```
 FROM nvcr.io/nvidia/l4t-base:r32.2
@@ -123,19 +145,13 @@ RUN apt-get install python3-pip -y
 RUN pip3 install -U pip
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python3-dev python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev -yq
+RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python3-dev python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-opencv
 
 RUN pip3 install --pre tensorflow-gpu==2.0.0 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42
 RUN pip3 install flask pillow
 
 COPY app /app
-
-# By default, we run manual image resizing to maintain parity with CVS webservice prediction results. If parity is not
-# required, you can enable faster image resizing by uncommenting the following lines. RUN echo "deb
-# http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list & apt update -y RUN apt
-# install -y libglib2.0-bin libsm6 libxext6 libxrender1 libjasper-dev libpng16-16 libopenexr23 libgstreamer1.0-0
-# libavcodec58 libavformat58 libswscale5 libqtgui4 libqt4-test libqtcore4 RUN pip install opencv-python
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-opencv
 
 # Expose the port
 EXPOSE 80
