@@ -1,12 +1,19 @@
-## High quality streaming of your usergroup on a shoestring
+# High quality streaming of your usergroup on a shoestring
 
-The past year we have been experimenting with streaming our events and create video's afterwards. In this article you can find our setup we found that works the best and with the least setup time.
+The past year we have been experimenting with streaming our events and create video's afterwards. In this article you can find our setup that we found works the best, with the least setup time and is very portable.
 
-To setup a live stream you need the record 3 input streams
 
-* Screen from the presenter
-* Audio from the presenter(s)
-* Video of the stage
+## Capture the input streams. 
+To setup a live stream you need to capture 3 input streams, combine them using a computer (control center) running broadcast software (Streamlabs OBS) to stream it to a online plaform (YouTube).
+
+#### The 3 input streams
+* Computer screen from the presenter (Slides & Demos), for this we use an Elgate Capture HD60s.
+* Audio from the presenter(s), for this we use Saramonic blink500 wireless microphones.
+* Video of the stage/presenter(s), for this we use a HD Webcam.
+
+
+#### Our setup
+This is how our setup looks like when everything is connected.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/fullsetup.jpg)
 
@@ -27,7 +34,7 @@ The device has a HDMI input port and HDMI output port. The only thing you have t
 ### Audio from the presenter(s)
 When streaming a session the audio is an essential thing, you can ofcourse use the microphone from your laptop or the camera, but the chance is very big that your audio is going to be very low in quality. 
 
-After a long search and trying out a few options we landend on the saramonic blink500 wireless microphones, see the list below why we choose them.
+After a long search and trying out a few options we landend on the Saramonic blink500 wireless microphones, see the list below why we choose them.
 * Extreemly portable. (They are very small)
 * Using 2.4GHz Channel. This frequency is allowed everywhere!
 * You can use in the inbuild microphone in the sender (Just clip-on and go) or connect a lavelier microphone to the receiver for better quality.
@@ -48,6 +55,13 @@ Not a requirement, but it is nice to add a video stream from the presenter telli
 
 #### References
 * [Official website for the Lifecam Studio](https://www.microsoft.com/accessories/en-us/products/webcams/lifecam-studio/q2f-00013)
+
+
+## Total costs
+| Elgate Capture HD60s | From 180$ | [Buy on Amazon](https://www.amazon.com/Elgato-Game-Capture-HD60-PlayStation/dp/B01DRWCOGA/)
+| Saramonic Blink 500 | From 240$ | [Buy on Amazon](https://www.amazon.com/Saramonic-Ultracompact-Dual-channel-Microphone-Transmitters/dp/B07Z2LRDQX/)
+| Microsoft HD Lifecam Studio | 60$ | [Buy on Amazon](https://www.amazon.com/Microsoft-LifeCam-Studio-1080p-Webcam/dp/B0042X8NT6)
+
 
 ## Control center
 
