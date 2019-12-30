@@ -8,7 +8,9 @@ To setup a live stream you need the record 3 input streams
 * Audio from the presenter(s)
 * Video of the stage
 
+![](https://raw.githubusercontent.com/hnky/blog/master/images/fullsetup.jpg)
 
+Let's zoom into the specific parts that we need to record.
 
 ### Screen from the presenter
 To capture the screen from the presenter you need to add a device that will capture the output from the laptop. The easiest way is to use a 'game capture device like the Elgate Capture HD60s.
@@ -41,13 +43,11 @@ Connect the line-out from the receiver to the line-in from the Elgato HD60s, con
 * [Official website for the Saramonic Blink500](http://www.saramonic.com/product/blink500-b2txtxrx/)
 
 
-
 ### Video of the stage
+Not a requirement, but it is nice to add a video stream from the presenter telling the story. This can be done with any webcam. For this I use a Microsoft HD Lifecam Studio with an USB 3 extention cable.
 
-
-
-![](https://raw.githubusercontent.com/hnky/blog/master/images/fullsetup.jpg)
-
+#### References
+* [Official website for the Lifecam Studio](https://www.microsoft.com/accessories/en-us/products/webcams/lifecam-studio/q2f-00013)
 
 ## Control center
 
