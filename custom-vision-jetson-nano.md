@@ -161,6 +161,8 @@ WORKDIR /app
 CMD python3 -u app.py
 ```
 
+### Build, run and test the container
+
 - Build the container
 ```
 docker build . -t mycustomvision
@@ -169,6 +171,12 @@ docker build . -t mycustomvision
 - Run the container
 ```
 docker run -o 127.0.0.1:80:80 mycustomvision
+```
+
+- Test the container
+```
+
+
 ```
 
 
