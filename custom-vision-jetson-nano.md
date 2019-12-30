@@ -202,14 +202,6 @@ docker build . -t  myregistry.azurecr.io/mycustomvision
 docker push myregistry.azurecr.io/mycustomvision
 ```
 
-
-
 ### References
 - https://medium.com/jit-team/building-a-gpu-enabled-kubernets-cluster-for-machine-learning-with-nvidia-jetson-nano-7b67de74172a
 - https://github.com/jit-team/jetson-nano/tree/master/docker/jetson-nano-tf-gpu
-- https://github.com/janza/docker-python3-opencv/blob/master/Dockerfile
-- https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-edge-scenarios/send_message_to_output.py
-- https://github.com/toolboc/IntelligentEdgeHOL
-- https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl
-- https://www.youtube.com/watch?v=_K5fqGLO8us
-- https://www.youtube.com/watch?v=gMJgsQ13SKs&feature=youtu.be
