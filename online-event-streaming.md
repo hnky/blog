@@ -18,8 +18,6 @@ The device has a HDMI input port and HDMI output port. The only thing you have t
 * [View the details of the Elgate Capture HD60s](https://www.elgato.com/en/gaming/game-capture-hd60-s)
 
 
-
-
 ### Audio from the presenter(s)
 
 ### Video of the stage
