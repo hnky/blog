@@ -1,7 +1,7 @@
 **status: work in progress**
 
 # Running a GPU enabled Azure Custom Vision container on a NVidia Jetson nano
-In this article we will go through the steps needed to run computer vision containers created with Microsoft Azure Custom Vision.
+In this article we will go through the steps needed to run computer vision containers created with [Microsoft Azure Custom Vision](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/home?WT.mc_id=AI4DEV02-blog-heboelma).
 An AI service and end-to-end platform for applying computer vision to your specific scenario. 
 
 At the end of this walk through you are running your own models on a GPU enabled NVidia Jetson nano in a Docker Container.
@@ -65,10 +65,9 @@ When the last line states: Result = PASS you can go to step 2, otherwise try fol
 
 
 ## 2 - Train your model and download your container
-
 Create your classification model using the Microsoft Azure Custom Vision Service.
 - [Use Python to create a classificationmode](https://www.henkboelman.com/articles/create-your-first-model-with-azure-custom-vision-and-python/)
-- [Create classification model through the interface](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)
+- [Create classification model through the interface](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier?WT.mc_id=AI4DEV02-blog-heboelma)
 
 When you have created classification model
 - Go to latest interation 
@@ -155,7 +154,7 @@ docker run -o 127.0.0.1:80:80 mycustomvision
 You can build the container on Windows 10 and push the image to an Azure Container registery. On the device you can pull that container from the registery and run it on your device.
 
 #### Azure Container Registry
-- Create an Azure Container Registry (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+- Create an Azure Container Registry (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?WT.mc_id=AI4DEV02-blog-heboelma)
 - On the Windows Machine login to the registry.
 ```
 docker login myregistry.azurecr.io
