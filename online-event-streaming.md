@@ -1,8 +1,7 @@
 # High quality streaming of your usergroup on a shoestring
 
-The past year we have been experimenting with streaming our events and create video's afterwards. In this article you can find our setup that we found works the best, with the least setup time and is very portable.
+The past year we have been experimenting with streaming our events and creating video's afterwards. In this article you find the setup that we found works the best for us. We looked at setup time, portability of set, quality of stream and the costs. The setup we landed on consists of 3 parts that you can buy for around 500 dollars.
 
-## Capture the input streams. 
 To setup a live stream you need to capture 3 input streams, combine them using a computer (control center) running broadcast software (Streamlabs OBS) to stream it to a online plaform (YouTube).
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/overview.jpg)
