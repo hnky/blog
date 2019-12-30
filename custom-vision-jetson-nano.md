@@ -183,7 +183,7 @@ curl -X POST http://127.0.0.1/url -d '{ "url": "https://github.com/hnky/blog/raw
 ## 4 - Push the container to an Azure Container Registry
 When you are done and happy with your container you can push the container to an Azure Container Registry so you can use it later on.
 
-- Create an Azure Container Registry (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?WT.mc_id=AI4DEV02-blog-heboelma)
+- [Create an Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?WT.mc_id=AI4DEV02-blog-heboelma)
 
 - Login to the registry.
 ```
