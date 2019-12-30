@@ -171,13 +171,15 @@ docker build . -t mycustomvision
 
 - Run the container
 ```
-docker run -o 127.0.0.1:80:80 mycustomvision
+docker run -p 127.0.0.1:80:80 -d mycustomvision
 ```
 
 - Test the container
 ```
 curl -X POST http://127.0.0.1/url -d '{ "url": "https://github.com/hnky/blog/raw/master/downloads/marge.jpg" }'
 ```
+
+![Output Docker](https://raw.githubusercontent.com/hnky/blog/master/images/005.jpg)
 
 
 ## 4 - Push the container to an Azure Container Registry
