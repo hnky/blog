@@ -12,31 +12,30 @@ To setup a live stream you need to capture 3 input streams, combine them using a
 * Video of the stage/presenter(s), for this we use a HD Webcam.
 
 #### Our setup
-This is how our setup looks like when everything is connected.
+This is how the setup looks like when everything is connected.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/fullsetup.jpg)
 
 Let's zoom into the specific parts that we need to capture.
 
 ### Screen from the presenter
-To capture the screen from the presenter you need to add a device that will capture the output from the laptop. The easiest way is to use a 'game capture device like the Elgate Capture HD60s.
+To capture the screen from the presenter you need to add a device that will capture the output (HDMI) from the laptop. The easiest way is to use a 'game capture' device like the Elgate Capture HD60s.
 
 #### Setup
-The device has a HDMI input port and HDMI output port. The only thing you have to do is to put this device between the laptop and the projector. Connect the USB-3 to the computer that is going to publish the stream.
+The device has a HDMI input port and HDMI output port. The only thing you have to do is to put this device between the laptop and the projector and connect the USB-3 cable to the control center (the computer that is going to publish the stream).
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/elgato-connections.jpg)
 
 #### References
 * [Official website of the Elgate Capture HD60s](https://www.elgato.com/en/gaming/game-capture-hd60-s)
 
-
 ### Audio from the presenter(s)
 When streaming a session the audio is an essential thing, you can ofcourse use the microphone from your laptop or the camera, but the chance is very big that your audio is going to be very low in quality. 
 
-After a long search and trying out a few options we landend on the Saramonic blink500 wireless microphones, see the list below why we choose them.
+After a long search and trying out a few options we landend on the Saramonic blink500 wireless microphones, this is why:
 * Extreemly portable. (They are very small)
 * Using 2.4GHz Channel. This frequency is allowed everywhere!
-* You can use in the inbuild microphone in the sender (Just clip-on and go) or connect a lavelier microphone to the receiver for better quality.
+* You can use in the in-build microphone in the sender (Just clip-on and go) or connect a lavelier microphone to the receiver for better quality.
 * No mixer needed, just connect to a line-in (mini-jack)
 * It comes with 2 senders and 1 receiver. This is perfect if you have 2 presenters.
 
