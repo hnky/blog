@@ -9,6 +9,7 @@ To setup a live stream you need the record 3 input streams
 * Video of the stage
 
 
+
 ### Screen from the presenter
 To capture the screen from the presenter you need to add a device that will capture the output from the laptop. The easiest way is to use a 'game capture device like the Elgate Capture HD60s.
 The device has a HDMI input port and HDMI output port. The only thing you have to do is to put this device between the laptop and the projector. Connect the USB-3 to the computer that is going to publish the stream.
@@ -22,6 +23,12 @@ The device has a HDMI input port and HDMI output port. The only thing you have t
 
 ### Video of the stage
 
+
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/fullsetup.jpg)
+
+
 ## Control center
 
 Running https://streamlabs.com/streamlabs-obs
+
