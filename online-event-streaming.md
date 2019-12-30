@@ -1,6 +1,6 @@
-# High quality streaming of your usergroup on a shoestring
+# High quality live streaming of your events on a shoestring
 
-The past year we have been experimenting with streaming our events and creating video's afterwards. In this article you find the setup that we found works the best for us. We looked at setup time, portability of set, quality of stream and the costs. The setup we landed on consists of 3 parts that you can buy for around 500 dollars.
+The past year our usergroup has been experimenting with streaming events and creating video's afterwards. In this article you find the setup that we found working the best for us. We looked at setup time, portability of set, quality of stream and the costs. The setup we landed on consists of 3 parts that you can buy for around 500 dollars.
 
 To setup a live stream you need to capture 3 input streams, combine them using a computer (control center) running broadcast software (Streamlabs OBS) to stream it to a online plaform (YouTube).
 
@@ -49,22 +49,25 @@ Connect the line-out from the receiver to the line-in from the Elgato HD60s, con
 
 
 ### Video of the stage
-Not a requirement, but it is nice to add a video stream from the presenter telling the story. This can be done with any webcam. For this I use a Microsoft HD Lifecam Studio with an USB 3 extention cable.
+Not a requirement, but it is nice to add a video stream from the presenter telling the story. This can be done with any webcam. We use a Microsoft HD Lifecam Studio with an USB 3 extention cable.
 
 #### References
 * [Official website for the Lifecam Studio](https://www.microsoft.com/accessories/en-us/products/webcams/lifecam-studio/q2f-00013)
 
+### The control center
+On the control all the streams come together. We use Streamlabs OBS to combine the streams in a nice template and stream the output to YouTube.
+
+#### References
+* [Official website for Streamlabs OBS](https://streamlabs.com/streamlabs-obs)
 
 ## Total costs
 
-| Item |  Costs |  Amazon | Netherlands |
+| Item |  Costs |  Amazon.com | Netherlands |
 | -- |  -- |  -- | -- |
 | Elgate Capture HD60s | From 180$ | [Buy on Amazon](https://www.amazon.com/Elgato-Game-Capture-HD60-PlayStation/dp/B01DRWCOGA/) | [Buy on Coolblue](https://www.coolblue.nl/product/708429/elgato-game-capture-hd60-s.html)
 | Saramonic Blink 500 | From 240$ | [Buy on Amazon](https://www.amazon.com/Saramonic-Ultracompact-Dual-channel-Microphone-Transmitters/dp/B07Z2LRDQX/) | [Buy on Bol.com](https://www.bol.com/nl/p/saramonic-duo-lavalier-microfoon-draadloos-blink-500-b2/9200000127214177/)
 | Microsoft HD Lifecam Studio | 60$ | [Buy on Amazon](https://www.amazon.com/Microsoft-LifeCam-Studio-1080p-Webcam/dp/B0042X8NT6) | [Buy on Bol.com](https://www.bol.com/nl/p/microsoft-lifecam-studio-for-business-zakelijke-webcam/1003004011476624/)
 
+Thanks for reading and I hope it is helpfull. If you have any comments or add-ons to this article? Feel free to [submit your comments or do a pull-request on GitHub](https://github.com/hnky/blog/blob/master/online-event-streaming.md).
 
-## Control center
-
-Running https://streamlabs.com/streamlabs-obs
 
