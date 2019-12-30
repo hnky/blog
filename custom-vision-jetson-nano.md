@@ -1,6 +1,6 @@
 **status: work in progress**
 
-# Running a GPU enabled Azure Custom Vision container on a NVidia Jetson nano
+# Running a GPU enabled Azure Custom Vision Docker container on a NVidia Jetson nano
 In this article we will go through the steps needed to run computer vision containers created with [Microsoft Azure Custom Vision](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/home?WT.mc_id=AI4DEV02-blog-heboelma).
 An AI service and end-to-end platform for applying computer vision to your specific scenario. 
 
@@ -91,7 +91,7 @@ When you have created your classification model:
 At the end of this step you have the link to a zip file containing the model, code and DockerFile.
 
 
-## 3 - Modify the Custom Vision container to run on the Jetson nano
+## 3 - Modify and run the Custom Vision container on the Jetson nano
 Now we have the zip file containing the DockerFile and model we can download and modify it so it can run on the Jetson Nano. It is the easiest to do the steps below through a SSH session.
 
 - Download the zip file
@@ -162,8 +162,9 @@ CMD python3 -u app.py
 ```
 
 ### Build, run and test the container
+No that the DockerFile contains the configugration so the container is capable of running the TensorFlow with GPU support on ARM64 device we can build and run the container.
 
-- Build the container
+- Build the container (this will take while)
 ```
 docker build . -t mycustomvision
 ```
@@ -175,14 +176,9 @@ docker run -o 127.0.0.1:80:80 mycustomvision
 
 - Test the container
 ```
-
-
+curl -X POST http://127.0.0.1/url -d '{ "url": "https://github.com/hnky/blog/raw/master/downloads/marge.jpg" }'
 ```
 
-
-
-### Build the container on Windows 10 and run on the device
-You can build the container on Windows 10 and push the image to an Azure Container registery. On the device you can pull that container from the registery and run it on your device.
 
 #### Azure Container Registry
 - Create an Azure Container Registry (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?WT.mc_id=AI4DEV02-blog-heboelma)
