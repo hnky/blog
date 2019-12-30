@@ -5,6 +5,8 @@ The past year we have been experimenting with streaming our events and create vi
 ## Capture the input streams. 
 To setup a live stream you need to capture 3 input streams, combine them using a computer (control center) running broadcast software (Streamlabs OBS) to stream it to a online plaform (YouTube).
 
+![](https://raw.githubusercontent.com/hnky/blog/master/images/overview.jpg)
+
 #### The 3 input streams
 * Computer screen from the presenter (Slides & Demos), for this we use an Elgate Capture HD60s.
 * Audio from the presenter(s), for this we use Saramonic blink500 wireless microphones.
