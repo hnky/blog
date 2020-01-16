@@ -151,18 +151,50 @@ Now you are ready to run Docker containers that support Tensorflow with GPU.
 
 ## 3. Create the IoT Edge modules
 
-Clone the repo.
+Start with cloning the repository that contains the IoT Edge modules and deployment config.
+```
+git clone https://github.com/hnky/iot-edge-custom-vision-jetson-nano
+
+```
 
 The repo contains the follow structure:
-- Modules => The folder that holds our IoT Edge modules
+- Modules => The folder that holds 3 IoT Edge modules
 - deployment.template.json => Template from which the deployment config is created.
-- 
+- .env => your secrets
 
 
-### A module 1 that runs the our computer vision model
-### A module 2 that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
-### A module 3 that grabs the results of the local IoT hub and send it to the IoT hub in Azure
+### 3.1 Custom Vision Module 
+This module container an application that exposes a model created with the Custom Vision Service through an API on port 80. This container contains a simple model with 3 classes: Apple, Banana or Negative.
 
+**Build the container and push to ACR**
+```
+cd modules\customvisionmodule
+docker build . -f Dockerfile.arm64v8 -t henkboelman.azurecr.io/customvisionmodule:latest-arm64v8
+docker push henkboelman.azurecr.io/customvisionmodule:latest-arm64v8
+```
+
+**Test the container**
+```
+docker run XXXXXX
+```
+
+If you want to create your own model, I have written an extended article 
+[Read more](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
+
+
+### 3.2 Camera Module 
+A module 2 that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
+```
+docker build . -f Dockerfile.arm64v8 -t henkboelman.azurecr.io/cameramodule:latest-arm64v8
+docker push henkboelman.azurecr.io/cameramodule:latest-arm64v8
+```
+
+### 3.3 The Alert Module 
+that grabs the results of the local IoT hub and send it to the IoT hub in Azure
+```
+docker build . -f Dockerfile.arm64v8 -t henkboelman.azurecr.io/alertmodule:latest-arm64v8
+docker push henkboelman.azurecr.io/alertmodule:latest-arm64v8
+```
 
 
 ## Deploy the modules to the IoT Edge
