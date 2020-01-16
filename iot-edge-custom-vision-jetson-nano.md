@@ -23,7 +23,7 @@ To get this working we need to:
 
 ## 1. Setup Azure
 
-
+[TODO]
 
 
 ## 2. Configure the Jetson Nano
