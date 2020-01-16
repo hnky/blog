@@ -7,7 +7,9 @@ In this article I will guide throught the steps needed to create your own edge d
 
 ## What do we need to build?
 To get this working we need to:
-- Setup IoT Edge in Azure
+- Setup Azure
+  - Azure IoT Edge
+  - Azure Container Registery
 - Configure the Jetson Nano
   - Install IoT Edge
   - Configure the device to run our custom vision modules.
@@ -19,7 +21,9 @@ To get this working we need to:
 - Setup an Event Grid and Logic app to handle the alerts.
 
 
-## Setup IoT Edge in Azure
+## 1. Setup Azure
+
+
 
 
 ## 2. Configure the Jetson Nano
@@ -52,6 +56,93 @@ curl -L https://github.com/Azure/azure-iotedge/releases/download/1.0.8-rc1/ioted
 sudo apt-get install -f
 ```
 
+Get your connection string from IoT Edge in Azure.
+
+Once you have obtained a connection string, open the configuration file:
+
+```
+sudo nano /etc/iotedge/config.yaml
+```
+
+Find the provisioning section of the file and uncomment the manual provisioning mode. Update the value of device_connection_string with the connection string from your IoT Edge device.
+
+```
+provisioning:
+  source: "manual"
+  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+
+# provisioning: 
+#   source: "dps"
+#   global_endpoint: "https://global.azure-devices-provisioning.net"
+#   scope_id: "{scope_id}"
+#   registration_id: "{registration_id}"
+```
+
+You will also want to configure the default IoT Edge agent configuration to pull the 1.0.8-rc1 version of the agent. While in the configuration file, scroll down to the agent section and update the image value to the following:
+
+```
+agent:
+  name: "edgeAgent"
+  type: "docker"
+  env: {}
+  config:
+    image: "mcr.microsoft.com/azureiotedge-agent:1.0.8-rc1"
+    auth: {}
+```
+
+[INSERT TEST IF IT IS WORKING]
+
+### 2.3 Prep for Custom Vision
+
+- Disable the UI 
+```
+sudo systemctl set-default multi-user.target
+```
+
+- Set the Nano in high-power (10W) mode:
+```
+sudo nvpmodel -m 0
+```
+
+- Set the NVidia runtime as a default runtime in Docker. 
+Your /etc/docker/daemon.json file should look like this.
+```
+{
+  “default-runtime”: “nvidia”,
+  “runtimes”: {
+    “nvidia”: {
+      “path”: “nvidia-container-runtime”,
+      “runtimeArgs”: []
+     }
+   }
+}
+```
+
+- Update your Nano OS and packages to the latest versions
+```
+sudo apt-get update
+sudo apt-get dist-upgrade
+```
+
+- Add current user to docker group to use docker command without sudo, following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+- Reboot your device
+
+- Test you GPU support
+```
+docker run -it jitteam/devicequery ./deviceQuery
+```
+When the last line states: Result = PASS you can go to step 2, otherwise try follow the instructions on screen to enable GPU support in Docker.
+![GPU Support](https://raw.githubusercontent.com/hnky/blog/master/images/001.jpg)
+
+Now you are ready to run Docker containers that support Tensorflow with GPU.
+
+
+[Extended information on running GPU enabled Custom Vision on the Jetson Nano](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
 [You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
 
 ## Create 3 IoT Edge module
