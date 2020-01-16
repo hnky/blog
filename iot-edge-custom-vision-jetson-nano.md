@@ -32,6 +32,8 @@ In this part we are going to configure our Jetson Nano device to run the 3 IoT E
 
 To continue you need an [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) and an USB camera.
 
+The easiest way to follow along with this walk-through is to connect with SSH to your Jetson Nano.
+
 ### 2.1 Install the latest operating system
 Install the latest version of the operating system on the Jetson Nano. The Nvidia learn website has a great tutorial for that.
 [Follow the instructions here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit). When the device boots and the desktop appears on the screen you can continue with the next step.
@@ -92,6 +94,9 @@ agent:
 
 [INSERT TEST IF IT IS WORKING]
 
+[You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
+
+
 ### 2.3 Prep for Custom Vision
 
 - Disable the UI 
@@ -141,11 +146,23 @@ When the last line states: Result = PASS you can go to step 2, otherwise try fol
 
 Now you are ready to run Docker containers that support Tensorflow with GPU.
 
-
 [Extended information on running GPU enabled Custom Vision on the Jetson Nano](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
-[You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
 
-## Create 3 IoT Edge module
+
+## 3. Create the IoT Edge modules
+
+Clone the repo.
+
+The repo contains the follow structure:
+- Modules => The folder that holds our IoT Edge modules
+- deployment.template.json => Template from which the deployment config is created.
+- 
+
+
+### A module 1 that runs the our computer vision model
+### A module 2 that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
+### A module 3 that grabs the results of the local IoT hub and send it to the IoT hub in Azure
+
 
 
 ## Deploy the modules to the IoT Edge
