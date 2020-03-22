@@ -34,9 +34,9 @@ To get access to all the individual video feeds from Skype in OBS you have to in
 
 ### Step 4
 Download and install NDI support for OBS
-- 1. [Download and install the NDI 4.0+ Runtime ](http://new.tk/NDIRedistV4) 
-- 2. [Download and install the latest: obs-ndi-X.X.X-Windows-Installer.exe](https://github.com/Palakis/obs-ndi/releases)
-- 3. Reboot your VM
+1. [Download and install the NDI 4.0+ Runtime ](http://new.tk/NDIRedistV4) 
+2. [Download and install the latest: obs-ndi-X.X.X-Windows-Installer.exe](https://github.com/Palakis/obs-ndi/releases)
+3. Reboot your VM
 
 
 
