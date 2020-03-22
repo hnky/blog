@@ -27,7 +27,7 @@ To connect with our host and speakers we are going to use Skype for Windows. Not
 
 ### Step 3
 1. Download and install Skype
-2. Enable NDI support in Skype.
+2. Enable NDI support in Skype. (Settings > Calling > Advanced > Allow NDI usage)
 3. Create 4 Skype accounts. (obsstudio/host1/presenter1/presenter2)
 
 ## Enable NDI Support in OBS
