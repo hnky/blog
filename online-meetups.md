@@ -30,11 +30,13 @@ Download and install Skype
 Enable NDI support in Skype.
 
 ## Enable NDI Support in OBS
+To get access to all the individual video feeds from Skype in OBS you have to install the NDI Plugin for OBS.
 
 ### Step 4
-Download and install NDI 
-Visit: [OBS NDI](https://github.com/Palakis/obs-ndi/releases) website.
-- Download 
+Download and install NDI support for OBS
+- 1. [Download and install the NDI 4.0+ Runtime ](http://new.tk/NDIRedistV4) 
+- 2. [Download and install the latest: obs-ndi-X.X.X-Windows-Installer.exe](https://github.com/Palakis/obs-ndi/releases)
+- 3. Reboot your VM
 
 
 
