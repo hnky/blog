@@ -23,7 +23,7 @@ Install OBS Studio in your VM.
 [Download OBS Studio for Windows 10](https://obsproject.com/download)
 
 ## Connection with your host and speakers
-To connect with our host and speakers we are going to use Skype for Windows. Not Skype for Business, not Skype for Windows 10. No Skype for Windows. In this version of skype you can enable NDI. NDI gives you the ability to access the individual video streams in OBS Studio. To avoid a lot of hassle with creating / editing scenes all the time in OBS I have create 4 Skype accounts that I hand out to people to dail in.
+To connect with our host and speakers we are going to use Skype for Windows. Not Skype for Business, not Skype for Windows 10. No Skype for Windows. In this version of skype you can enable NDI. NDI gives you the ability to access the individual video streams in OBS Studio. To avoid a lot of hassle with creating / editing scenes all the time in OBS I have create 4 Skype accounts that I hand out to people to dial in.
 
 ### Step 3
 1. Download and install Skype
@@ -31,7 +31,7 @@ To connect with our host and speakers we are going to use Skype for Windows. Not
 3. Create 4 Skype accounts. (obsstudio/host1/presenter1/presenter2)
 
 ## Enable NDI Support in OBS
-To get access to all the individual video feeds from Skype in OBS you have to install the NDI Plugin for OBS.
+To get access to all the individual video feeds from Skype in OBS you must install the NDI Plugin for OBS.
 
 ### Step 4
 Download and install NDI support for OBS
@@ -51,15 +51,15 @@ In OBS you can create scenes, this are the screens you can switch between during
 6. No broadcast 
 
 ### Step 5
-Now lets get the Skype videos streams in OBS.
+Now let’s get the Skype videos streams in OBS.
 
 1. Start Skype for Windows on the VM and create a meeting.
-2. Get 2 others laptops to join the call using the Host 1 and Presenter 1 account.
+2. Get 2 other laptops to join the call using the Host 1 and Presenter 1 account.
 3. In OBS Studio > Click the + button under sources > Select NDI Source > Select the Skype video stream
 4. When you have the source in your scene, you want to make sure you transform it the right way. [Read this Skype FAQ](https://support.skype.com/en/faq/FA34853/what-is-skype-for-content-creators)
 
 **Tip:**
-At the time of writing you get all the video feeds as a different NDI stream. This is not the case for the audio, every NDI source gets all the audio from the conversation. So make sure per scene you only have one audio source active.
+At the time of writing you get all the video feeds as a different NDI stream. This is not the case for the audio, every NDI source gets all the audio from the conversation. So, make sure per scene you only have one audio source active.
 
 ### Step 6
 Create a countdown timer
@@ -77,7 +77,4 @@ Everything is now ready to start broadcasting. You can do this directly from OBS
 - Create your scenes in OBS
 - Setup ReStream for multiplatform streaming
 
-I hope this was helpfull to get you started with streaming your usergroup meeting, without leaving your home. If you have any addons or orther tips let me know!
-
-
-
+I hope this was helpful to get you started with streaming your user group meeting, without leaving your home. If you have any addons or other tips let me know!
