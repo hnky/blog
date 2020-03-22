@@ -68,7 +68,16 @@ xxx
 ## Broadcast!
 Everything is now ready to start broadcasting. You can do this directly from OBS to multiple channels, but you can also add a 3th party service like ReStream in between, meaning that OBS Studio sends the stream to ReStream and from there your video is broadcasted to many different platforms. 
 
-I hope this was helpfulf to get you started with streaming your usergroup meeting, without leaving your home. If you have any addons or orther tips let me know!
+## Summarize
+- Get a Virtual Machine in the cloud to be sure of a stable Internet connection.
+- Install OBS Studio
+- Install the OBS NDI plugin
+- Install Skype for Windows
+- Create accounts for your host and speakers
+- Create your scenes in OBS
+- Setup ReStream for multiplatform streaming
+
+I hope this was helpfull to get you started with streaming your usergroup meeting, without leaving your home. If you have any addons or orther tips let me know!
 
 
 
