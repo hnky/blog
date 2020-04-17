@@ -23,7 +23,21 @@ To get this working we need to:
 - Setup an Event Grid and Logic app to handle the alerts.
 
 ## 1. Setup Azure
+To get started we need to setup a few things in Azure. For this we are going to use the Azure CLI. 
 
+
+
+### 1.1 Create an IoT Hub
+
+Create a Resource group
+```
+az group create --name {your resource group name} --location westeurope
+```
+
+Create 
+```
+az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
+```
 [TODO]
 
 
