@@ -69,7 +69,7 @@ Install the latest version of the operating system on the Jetson Nano. The Nvidi
 ### 2.2 Install IoT Edge on the Jetson Nano
 ARM64 builds of IoT Edge are currently being offered in preview and will eventually go into General Availability. We will make use of the ARM64 builds to ensure that we get the best performance out of our IoT Edge solutions.
 
-These builds are provided starting in the 1.0.8-rc1 release tag. To install the 1.0.8-rc1 release of IoT Edge, run the following from a terminal on your Nvidia Jetson device:
+Run the following from a terminal on your Nvidia Jetson device:
 
 ```
 # You can copy the entire text from this code block and 
