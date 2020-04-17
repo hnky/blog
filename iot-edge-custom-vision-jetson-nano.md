@@ -23,22 +23,22 @@ To get this working we need to:
 - Setup an Event Grid and Logic app to handle the alerts.
 
 ## 1. Setup Azure
-To get started we need to setup a few things in Azure. For this we are going to use the Azure CLI. 
-
-
+To get started we need to setup a few things in Azure. For this we are going to use the Azure CLI. If you don't have the Azure CLI installed on your machine you can follow the [tutorial on MS Docs here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 ### 1.1 Create an IoT Hub
+The first thing we need is an IoT Hub. We will use this Hub to communicate with our Edge Device. It will give us the ability to deploy to deploy our AI Modules to the device and give the Edge device the ability to send data back to the cloud. 
 
-Create a Resource group
+**Create a Resource group**
 ```
 az group create --name {your resource group name} --location westeurope
 ```
 
-Create 
+**Create a IoT Hub**
 ```
 az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
 ```
-[TODO]
+
+[Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
 
 
 ## 2. Configure the Jetson Nano
