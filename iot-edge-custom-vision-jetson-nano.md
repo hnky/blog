@@ -48,8 +48,8 @@ az acr create --resource-group {your resource group name} --name {your container
 ```
 
 **Learn more about these resources on MS Docs**
-[Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
-[Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli)
+- [Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
+- [Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli)
 
 
 
@@ -85,7 +85,22 @@ curl -L https://github.com/Azure/azure-iotedge/releases/download/1.0.8-rc1/ioted
 sudo apt-get install -f
 ```
 
-Get your connection string from IoT Edge in Azure.
+Get your connection string from IoT Edge in Azure. You can 
+
+```
+# First add the azure-iot extension.
+az extension add --name azure-iot
+
+# Create a new IoT Edge device
+az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
+
+# List all IoT Edge devices
+az iot hub device-identity list --hub-name [hub name]
+
+# Get the Connection string
+az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
+```
+
 
 Once you have obtained a connection string, open the configuration file:
 
@@ -119,9 +134,24 @@ agent:
     auth: {}
 ```
 
-[INSERT TEST IF IT IS WORKING]
+Restart the iot-edge service
+```
+service iotedge restart
+```
 
-[You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
+See if your device is connected to the IoT Hub
+```
+az iot hub device-identity show --device-id [device id] --hub-name [hub name]
+```
+
+Look in the response for:
+```
+"connectionState": "Connected"
+```
+
+**More details on setting up Azue IoT Edge on the Jetson Nano**
+- [Register an IoT Edge device on MS Docs](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device)
+- [You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
 
 
 ### 2.3 Prep for Custom Vision
