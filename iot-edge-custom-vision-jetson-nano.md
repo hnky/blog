@@ -53,6 +53,11 @@ The second resources we need to create is an Azure Container Registry. In this c
 az acr create --resource-group {your resource group name} --name {your container registry name} --sku Basic
 ```
 
+**Login to your Azure Container Registry**
+```
+docker login {your container registry name}.azurecr.io
+```
+
 **Learn more about these resources on MS Docs**    
 - [Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
 - [Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli)
@@ -225,8 +230,9 @@ Now you are ready to run Docker containers that support Tensorflow with GPU.
 
 Start with cloning the repository that contains the IoT Edge modules and deployment config.
 ```
+mkdir IoTEdgeModules
+cd IoTEdgeModules
 git clone https://github.com/hnky/iot-edge-custom-vision-jetson-nano
-
 ```
 
 The repo contains the follow structure:
@@ -235,14 +241,21 @@ The repo contains the follow structure:
 - .env => your secrets
 
 
+**Login to your **
+```
+
+```
+
+
+
 ### 3.1 Custom Vision Module 
 This module container an application that exposes a model created with the Custom Vision Service through an API on port 80. This container contains a simple model with 3 classes: Apple, Banana or Negative.
 
 **Build the container and push to ACR**
 ```
-cd modules\customvisionmodule
-docker build . -f Dockerfile.arm64v8 -t henkboelman.azurecr.io/customvisionmodule:latest-arm64v8
-docker push henkboelman.azurecr.io/customvisionmodule:latest-arm64v8
+cd Modules/CustomVisionModule
+docker build . -f Dockerfile.arm64v8 -t AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
+docker push AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
 ```
 
 **Test the container**
