@@ -1,6 +1,8 @@
 # Object alert with Custom Vision and IoT Edge on the Jetson Nano
 
-In this article I will guide throught the steps needed to create your own edge device that can send alerts when an object is detect in a camera feed on the Jetson Nano. The goal is to do the processing of the frames localy and only send a message to the cloud when the detected object hits a certain confidence tresshold.
+In this article I will guide throught the steps needed to create your own object alertings system running on an edge device. For this we will use a NVidia Jetson Nano, custom vision and Azure IoT Edge.
+
+The goal is to process the camera frames localy and only send a message to the cloud when the detected object hits a certain confidence threshold.
 
 [Insert graphic]
 
@@ -14,12 +16,11 @@ To get this working we need to:
   - Install IoT Edge
   - Configure the device to run our custom vision modules.
 - Create 3 IoT Edge module
-  - A module 1 that runs the our computer vision model
-  - A module 2 that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
-  - A module 3 that grabs the results of the local IoT hub and send it to the IoT hub in Azure
+  - Fist a module that runs the our computer vision model
+  - Second a module that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
+  - Thirt a module that grabs the results of the local IoT hub and send it to the IoT hub in Azure
 - Deploy the modules to the IoT Edge
 - Setup an Event Grid and Logic app to handle the alerts.
-
 
 ## 1. Setup Azure
 
