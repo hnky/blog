@@ -156,7 +156,7 @@ Look in the response for:
 
 ### 2.3 Prep for Custom Vision
 
-- Disable the UI 
+Disable the UI. By default the Nano runs a visual interface. This takes up memory, which is needed to run the AI models.
 ```
 sudo systemctl set-default multi-user.target
 ```
