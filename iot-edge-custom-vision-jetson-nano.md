@@ -8,7 +8,7 @@ The goal is to process the camera frames localy and only send a message to the c
 
 Requirements before you start:
 - To continue you need an [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) and an USB camera.
-- A 
+- A Azure Subscription, if you don't have one you [create a free one here]().
 
 
 ## What do we need to build?
@@ -48,12 +48,12 @@ az iot hub create --name {your iot hub name} --resource-group {your resource gro
 ### 1.2 Create an Azure Container Registry
 The second resources we need to create is an Azure Container Registry. In this container registry we will store our IoT Edge modules
 
-**Create an Azure Container Registry**
+**Create an Azure Container Registry**    
 ```
 az acr create --resource-group {your resource group name} --name {your container registry name} --sku Basic
 ```
 
-**Learn more about these resources on MS Docs**
+**Learn more about these resources on MS Docs**    
 - [Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
 - [Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli)
 
@@ -66,7 +66,7 @@ In this part we are going to configure our Jetson Nano device to run the 3 IoT E
 
 The easiest way to follow along with this walk-through is to connect with SSH to your Jetson Nano.
 
-### 2.1 Install the latest operating system
+### 2.1 Install the latest operating system   
 Install the latest version of the operating system on the Jetson Nano. The Nvidia learn website has a great tutorial for that.
 [Follow the instructions here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit). When the device boots and the desktop appears on the screen you can continue with the next step.
 
@@ -160,20 +160,21 @@ Look in the response for:
 
 
 ### 2.3 Enable GPU support in Docker
+AI models run faster if they can use the power of a GPU. To get the support for the GPU in Docker on the Jetson Nano you have to adjust a few settings.
 
-**Disable the UI**
+**Disable the UI**    
 By default the Nano runs a visual interface. This takes up resources, which are needed to run the AI models.
 ```
 sudo systemctl set-default multi-user.target
 ```
 
-**Get more power**
+**Get more power**      
 Set the Nano in high-power (10W) mode:
 ```
 sudo nvpmodel -m 0
 ```
 
-**NVidia runtime**
+**NVidia runtime**    
 Set the NVidia runtime as a default runtime in Docker. 
 Your /etc/docker/daemon.json file should look like this.
 ```
@@ -188,14 +189,14 @@ Your /etc/docker/daemon.json file should look like this.
 }
 ```
 
-**Run your updates**
+**Run your updates**    
 Update your Nano OS and packages to the latest versions
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
 ```
 
-**Add current user to docker group**
+**Add current user to docker group**   
 Add current user to docker group to use docker command without sudo, 
 following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
 ```
@@ -204,23 +205,21 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-**Reboot your device**
+**Reboot your device**       
 ```
 sudo reboot
 ``` 
 
-**Test you GPU support**
+**Test you GPU support**      
 ```
 docker run -it jitteam/devicequery ./deviceQuery
 ```
-
-When the last line states: Result = PASS you can go to step 2, otherwise try follow the instructions on screen to enable GPU support in Docker.
+The response should look like this:
 ![GPU Support](https://raw.githubusercontent.com/hnky/blog/master/images/ml_iot_cuda_test.jpg)
-
+  
+*If the last line doesn't say "Result = PASS"  follow the instructions on screen to enable GPU support in Docker.*
+  
 Now you are ready to run Docker containers that support Tensorflow with GPU.
-
-[Extended information on running GPU enabled Custom Vision on the Jetson Nano](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
-
 
 ## 3. Create the IoT Edge modules
 
@@ -281,3 +280,4 @@ docker push henkboelman.azurecr.io/alertmodule:latest-arm64v8
 - https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl
 - https://www.youtube.com/watch?v=_K5fqGLO8us
 - https://www.youtube.com/watch?v=gMJgsQ13SKs&feature=youtu.be
+[Extended information on running GPU enabled Custom Vision on the Jetson Nano](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
