@@ -6,6 +6,10 @@ The goal is to process the camera frames localy and only send a message to the c
 
 [Insert graphic]
 
+Requirements before you start:
+- To continue you need an [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) and an USB camera.
+- A 
+
 
 ## What do we need to build?
 To get this working we need to:
@@ -16,15 +20,16 @@ To get this working we need to:
   - Install IoT Edge
   - Configure the device to run our custom vision modules.
 - Create 3 IoT Edge module
-  - Fist a module that runs the our computer vision model
-  - Second a module that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
-  - Thirt a module that grabs the results of the local IoT hub and send it to the IoT hub in Azure
+  - A module that runs the our computer vision model
+  - A module that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
+  - A module that grabs the results of the local IoT hub and send it to the IoT hub in Azure
 - Deploy the modules to the IoT Edge
 - Setup an Event Grid and Logic app to handle the alerts.
 
 
 ## Part 1 - Setup resources in Azure
 To get started we need to setup a few things in Azure. For this we are going to use the Azure CLI. If you don't have the Azure CLI installed on your machine you can follow the [tutorial on MS Docs here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+
 
 ### 1.1 Create an IoT Hub
 The first resources we need is an IoT Hub. We will use this Hub to communicate with our Edge Device. It will give us the ability to deploy to deploy our IoT Edge models to the device and give the Edge device the ability to send data back to the cloud. 
@@ -39,6 +44,7 @@ az group create --name {your resource group name} --location westeurope
 az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
 ```
 
+
 ### 1.2 Create an Azure Container Registry
 The second resources we need to create is an Azure Container Registry. In this container registry we will store our IoT Edge modules
 
@@ -52,12 +58,11 @@ az acr create --resource-group {your resource group name} --name {your container
 - [Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli)
 
 
-
 ## Part 2 - Setup the Nvidia Jetson Nano
 
 In this part we are going to configure our Jetson Nano device to run the 3 IoT Edge modules we are going to build later on. 
 
-To continue you need an [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) and an USB camera.
+
 
 The easiest way to follow along with this walk-through is to connect with SSH to your Jetson Nano.
 
@@ -154,19 +159,22 @@ Look in the response for:
 - [You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
 
 
-### 2.3 Prep for Custom Vision
+### 2.3 Enable GPU support in Docker
 
-Disable the UI. By default the Nano runs a visual interface. This takes up memory, which is needed to run the AI models.
+**Disable the UI**
+By default the Nano runs a visual interface. This takes up resources, which are needed to run the AI models.
 ```
 sudo systemctl set-default multi-user.target
 ```
 
-- Set the Nano in high-power (10W) mode:
+**Get more power**
+Set the Nano in high-power (10W) mode:
 ```
 sudo nvpmodel -m 0
 ```
 
-- Set the NVidia runtime as a default runtime in Docker. 
+**NVidia runtime**
+Set the NVidia runtime as a default runtime in Docker. 
 Your /etc/docker/daemon.json file should look like this.
 ```
 {
@@ -180,26 +188,34 @@ Your /etc/docker/daemon.json file should look like this.
 }
 ```
 
-- Update your Nano OS and packages to the latest versions
+**Run your updates**
+Update your Nano OS and packages to the latest versions
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
 ```
 
-- Add current user to docker group to use docker command without sudo, following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
+**Add current user to docker group**
+Add current user to docker group to use docker command without sudo, 
+following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-- Reboot your device
 
-- Test you GPU support
+**Reboot your device**
+```
+sudo reboot
+``` 
+
+**Test you GPU support**
 ```
 docker run -it jitteam/devicequery ./deviceQuery
 ```
+
 When the last line states: Result = PASS you can go to step 2, otherwise try follow the instructions on screen to enable GPU support in Docker.
-![GPU Support](https://raw.githubusercontent.com/hnky/blog/master/images/001.jpg)
+![GPU Support](https://raw.githubusercontent.com/hnky/blog/master/images/ml_iot_cuda_test.jpg)
 
 Now you are ready to run Docker containers that support Tensorflow with GPU.
 
