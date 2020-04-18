@@ -266,10 +266,19 @@ docker push AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
 docker run -p 127.0.0.1:80:80 -d AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
 
 curl -X POST http://127.0.0.1/url -d '{ "url": "https://www.wievultuwbroodtrommel.nl/205-large_default/banaan.jpg"}'
-
 ```
 
-If you want to create your own model, I have written an extended article 
+**Stop the container**
+```
+# List all the containers and locate the Container ID
+docker container list
+
+# Stop the container
+docker container stop {container id}
+```
+
+**Learn more**
+If you want to learn how to create your own model and run it as a container on the Jetson Nano you can read 
 [Read more](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
 
 
@@ -291,7 +300,20 @@ docker push AIAprilACR.azurecr.io/alertmodule:latest-arm64v8
 ```
 
 
-## Deploy the modules to the IoT Edge
+## 4. Deploy the modules to the IoT Edge
+
+**Create a deployment**
+
+az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int
+
+
+
+
+**Learn more**
+- https://docs.microsoft.com/en-us/azure/iot-edge/module-composition
+- https://docs.microsoft.com/en-us/azure/iot-edge/module-development
+- https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-modules-cli
+- https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor-cli
 
 
 ** Work in progress **
