@@ -1,4 +1,4 @@
-# Object alert with Custom Vision and IoT Edge on the Jetson Nano
+# Create your own vision alerting system with IoT Edge, Azure Custom Vision and a Jetson Nano
 
 In this article I will guide throught the steps needed to create your own object alertings system running on an edge device. For this we will use a NVidia Jetson Nano, custom vision and Azure IoT Edge.
 
