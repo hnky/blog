@@ -78,6 +78,13 @@ The easiest way to follow along with this walk-through is to connect with SSH to
 Install the latest version of the operating system on the Jetson Nano. The Nvidia learn website has a great tutorial for that.
 [Follow the instructions here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit). When the device boots and the desktop appears on the screen you can continue with the next step.
 
+```
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo apt-get -y install libssl-dev libffi-dev jq python-pip
+pip install iotedgedev
+sudo mv ~/.local/bin/iotedgedev /usr/local/bin
+```
+
 
 ### 2.2 Install IoT Edge on the Jetson Nano
 ARM64 builds of IoT Edge are currently being offered in preview and will eventually go into General Availability. We will make use of the ARM64 builds to ensure that we get the best performance out of our IoT Edge solutions.
@@ -304,17 +311,41 @@ docker push AIAprilACR.azurecr.io/alertmodule:latest-arm64v8
 
 **Create a deployment**
 
-az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int
+Update the .env file with your credentials.
+```
+nano .env
+```
+
+Generate the deployment manifest from the deployment.template.json.
+```
+iotedgedev genconfig -f deployment.template.json -P arm64v8
+```
+
+Copy the generated manifest file 'config/deployment.config' to your computer running the Azure CLI.
+
+```
+az iot edge set-modules --device-id [device id] --hub-name [hub name] --content deployment.config
+```
+
+```
+az iot hub module-identity list --device-id [device id] --hub-name [hub name]
+``` 
+
+On the Jetson Nano  
+```
+iotedge list
+```
 
 
-
-
-**Learn more**
+**Learn more in dept**
 - https://docs.microsoft.com/en-us/azure/iot-edge/module-composition
 - https://docs.microsoft.com/en-us/azure/iot-edge/module-development
 - https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-modules-cli
 - https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor-cli
 
+
+**Further reading**
+- https://dev.to/azure/getting-started-with-devops-ci-cd-pipelines-on-nvidia-arm64-devices-4668
 
 ** Work in progress **
 
