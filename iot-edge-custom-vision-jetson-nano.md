@@ -54,9 +54,12 @@ az acr create --resource-group {your resource group name} --name {your container
 ```
 
 **Login to your Azure Container Registry**
+First use the CLI to get the credentials from the ACR.
 ```
-docker login {your container registry name}.azurecr.io
+az acr update -n {your container registry name} --admin-enabled true
+az acr credential show -n {your container registry name}
 ```
+You will need these credentials in part 3.
 
 **Learn more about these resources on MS Docs**    
 - [Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
@@ -241,9 +244,9 @@ The repo contains the follow structure:
 - .env => your secrets
 
 
-**Login to your **
+**Login to your ACR**
 ```
-
+docker login {your container registry name}.azurecr.io
 ```
 
 
@@ -260,7 +263,10 @@ docker push AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
 
 **Test the container**
 ```
-docker run XXXXXX
+docker run -p 127.0.0.1:80:80 -d AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
+
+curl -X POST http://127.0.0.1/url -d '{ "url": "https://www.wievultuwbroodtrommel.nl/205-large_default/banaan.jpg"}'
+
 ```
 
 If you want to create your own model, I have written an extended article 
@@ -270,15 +276,18 @@ If you want to create your own model, I have written an extended article
 ### 3.2 Camera Module 
 A module 2 that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
 ```
-docker build . -f Dockerfile.arm64v8 -t henkboelman.azurecr.io/cameramodule:latest-arm64v8
-docker push henkboelman.azurecr.io/cameramodule:latest-arm64v8
+cd Modules/CameraModule
+docker build . -f Dockerfile.arm64v8 -t AIAprilACR.azurecr.io/cameramodule:latest-arm64v8
+docker push AIAprilACR.azurecr.io/cameramodule:latest-arm64v8
 ```
+
 
 ### 3.3 The Alert Module 
 that grabs the results of the local IoT hub and send it to the IoT hub in Azure
 ```
-docker build . -f Dockerfile.arm64v8 -t henkboelman.azurecr.io/alertmodule:latest-arm64v8
-docker push henkboelman.azurecr.io/alertmodule:latest-arm64v8
+cd Modules/AlertModule
+docker build . -f Dockerfile.arm64v8 -t AIAprilACR.azurecr.io/alertmodule:latest-arm64v8
+docker push AIAprilACR.azurecr.io/alertmodule:latest-arm64v8
 ```
 
 
