@@ -336,6 +336,18 @@ On the Jetson Nano
 iotedge list
 ```
 
+Run the command and see the output of the alerting module.
+```
+iotedge logs alert-module
+```
+
+To view the output of the camera open a webbrowser and enter the ip of the Jetson Nano on port 5012. You will see a small preview of the captured frame.
+
+http://192.168.178.31:5012/
+
+
+
+
 
 **Learn more in dept**
 - https://docs.microsoft.com/en-us/azure/iot-edge/module-composition
