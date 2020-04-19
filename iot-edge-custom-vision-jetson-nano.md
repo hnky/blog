@@ -4,7 +4,7 @@ In this article I will guide you throught the steps needed to create your own ob
 
 The goal is to process the camera frames localy on the Jetson Nano and only send a message to the cloud when the detected object hits a certain confidence threshold.
 
-[Insert graphic]
+![](https://raw.githubusercontent.com/hnky/blog/master/images/ai-vision.jpg)
 
 **Requirements before you starting:**
 - You need a [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
