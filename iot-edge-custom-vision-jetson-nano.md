@@ -12,22 +12,6 @@ The goal is to process the camera frames localy on the Jetson Nano and only send
 - An Azure Subscription ([Get started for free here](https://azure.microsoft.com/en-us/free/?WT.mc_id=aiapril-blog-heboelma))
 
 
-## What do we need to build?
-To get this working we need to:
-- Setup Azure
-  - Azure IoT Edge
-  - Azure Container Registery
-- Configure the Jetson Nano
-  - Install IoT Edge
-  - Configure the device to run our custom vision modules.
-- Create 3 IoT Edge module
-  - A module that runs the our computer vision model
-  - A module that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
-  - A module that grabs the results of the local IoT hub and send it to the IoT hub in Azure
-- Deploy the modules to the IoT Edge
-- Setup an Event Grid and Logic app to handle the alerts.
-
-
 ## Part 1 - Setup resources in Azure
 To get started we need to setup a few resources in Azure. For this we are going to use the [Azure CLI](https://docs.microsoft.com/cli/azure/?WT.mc_id=aiapril-blog-heboelma). If you don't have the Azure CLI installed on your machine you can follow the [tutorial on MS Docs here](https://docs.microsoft.com/cli/azure/install-azure-cli?WT.mc_id=aiapril-blog-heboelma).
 
