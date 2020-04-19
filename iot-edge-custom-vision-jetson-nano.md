@@ -6,7 +6,7 @@ The goal is to process the camera frames localy on the Jetson Nano and only send
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/ai-vision.jpg)
 
-**Requirements before you starting:**
+**Requirements before you start:**
 - You need a [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
 - An USB camera.
 - An Azure Subscription ([Get started for free here](https://azure.microsoft.com/en-us/free/?WT.mc_id=aiapril-blog-heboelma))
