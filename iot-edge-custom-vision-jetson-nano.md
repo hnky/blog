@@ -1,14 +1,15 @@
 # Create your own vision alerting system with IoT Edge, Azure Custom Vision and a Jetson Nano
 
-In this article I will guide throught the steps needed to create your own object alertings system running on an edge device. For this we will use a NVidia Jetson Nano, custom vision and Azure IoT Edge.
+In this article I will guide you throught the steps needed to create your own object alertings system running on an edge device. For this we will use a NVidia Jetson Nano, the Azure Custom Vision service and Azure IoT Edge.
 
-The goal is to process the camera frames localy and only send a message to the cloud when the detected object hits a certain confidence threshold.
+The goal is to process the camera frames localy on the Jetson Nano and only send a message to the cloud when the detected object hits a certain confidence threshold.
 
 [Insert graphic]
 
-Requirements before you start:
-- To continue you need an [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) and an USB camera.
-- A Azure Subscription, if you don't have one you [create a free one here]().
+**Requirements before you starting:**
+- You need a [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+- An USB camera.
+- An Azure Subscription ([Get started for free here](https://azure.microsoft.com/en-us/free/?WT.mc_id=aiapril-blog-heboelma))
 
 
 ## What do we need to build?
@@ -28,72 +29,67 @@ To get this working we need to:
 
 
 ## Part 1 - Setup resources in Azure
-To get started we need to setup a few things in Azure. For this we are going to use the Azure CLI. If you don't have the Azure CLI installed on your machine you can follow the [tutorial on MS Docs here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+To get started we need to setup a few resources in Azure. For this we are going to use the [Azure CLI](https://docs.microsoft.com/cli/azure/?WT.mc_id=aiapril-blog-heboelma). If you don't have the Azure CLI installed on your machine you can follow the [tutorial on MS Docs here](https://docs.microsoft.com/cli/azure/install-azure-cli?WT.mc_id=aiapril-blog-heboelma).
 
 
-### 1.1 Create an IoT Hub
-The first resources we need is an IoT Hub. We will use this Hub to communicate with our Edge Device. It will give us the ability to deploy to deploy our IoT Edge models to the device and give the Edge device the ability to send data back to the cloud. 
+### 1.1 Create an Azure IoT Hub
+The first resources we need is an IoT Hub. We will use this Hub to communicate with our Edge Device. It will give us the ability to deploy our IoT Edge models to the device and give the Edge device the ability to send messages back to the cloud. 
 
 **Create a Resource group**
 ```
-az group create --name {your resource group name} --location westeurope
+az group create --name [resource group name] --location westeurope
 ```
 
 **Create an IoT Hub**
 ```
-az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
+az iot hub create --name [iot hub name] --resource-group [resource group name] --sku S1
 ```
 
 
 ### 1.2 Create an Azure Container Registry
-The second resources we need to create is an Azure Container Registry. In this container registry we will store our IoT Edge modules
+The second resource we need to create is an Azure Container Registry. In this container registry we will store our IoT Edge modules
 
 **Create an Azure Container Registry**    
 ```
-az acr create --resource-group {your resource group name} --name {your container registry name} --sku Basic
+az acr create --resource-group [resource group name] --name [container registry name] --sku Basic
 ```
 
 **Login to your Azure Container Registry**
 First use the CLI to get the credentials from the ACR.
 ```
-az acr update -n {your container registry name} --admin-enabled true
-az acr credential show -n {your container registry name}
+az acr update -n [container registry name] --admin-enabled true
+az acr credential show -n [container registry name]
 ```
 You will need these credentials in part 3.
 
 **Learn more about these resources on MS Docs**    
-- [Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli)
-- [Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli)
+- [Create an IoT hub using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli?WT.mc_id=aiapril-blog-heboelma)
+- [Create a Container Registry using the CLI on MS Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli?WT.mc_id=aiapril-blog-heboelma)
 
 
 ## Part 2 - Setup the Nvidia Jetson Nano
 
-In this part we are going to configure our Jetson Nano device to run the 3 IoT Edge modules we are going to build later on. 
+In this part we are going to prepare our Jetson Nano device to run the 3 IoT Edge modules we are going to build later on. 
 
-
-
-The easiest way to follow along with this walk-through is to connect with SSH to your Jetson Nano.
+*The easiest way to follow along with this walk-through is to connect with SSH to your Jetson Nano.*
 
 ### 2.1 Install the latest operating system   
 Install the latest version of the operating system on the Jetson Nano. The Nvidia learn website has a great tutorial for that.
 [Follow the instructions here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit). When the device boots and the desktop appears on the screen you can continue with the next step.
 
-```
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-sudo apt-get -y install libssl-dev libffi-dev jq python-pip
-pip install iotedgedev
-sudo mv ~/.local/bin/iotedgedev /usr/local/bin
-```
-
-
 ### 2.2 Install IoT Edge on the Jetson Nano
 ARM64 builds of IoT Edge are currently being offered in preview and will eventually go into General Availability. We will make use of the ARM64 builds to ensure that we get the best performance out of our IoT Edge solutions.
 
-Run the following from a terminal on your Nvidia Jetson device:
+Run the code below on the Nvidia Jetson device to install IoT Edge
 
 ```
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
+
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo apt-get -y install libssl-dev libffi-dev jq python-pip
+pip install iotedgedev
+sudo mv ~/.local/bin/iotedgedev /usr/local/bin
 
 # Download and install the standard libiothsm implementation
 curl -L https://github.com/Azure/azure-iotedge/releases/download/1.0.8-rc1/libiothsm-std_1.0.8.rc1-1_arm64.deb -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
@@ -105,7 +101,8 @@ curl -L https://github.com/Azure/azure-iotedge/releases/download/1.0.8-rc1/ioted
 sudo apt-get install -f
 ```
 
-Get your connection string from IoT Edge in Azure. You can 
+Now that IoT Edge is installed we need to connect the device to the IoT Hub.
+For this we need to setup a device in the IoT hub and retrieve the connection string. We can retrieve this connection string using the Azure CLI with the azure-iot extension.
 
 ```
 # First add the azure-iot extension.
@@ -121,8 +118,7 @@ az iot hub device-identity list --hub-name [hub name]
 az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
 ```
 
-
-Once you have obtained a connection string, open the configuration file:
+Once you have obtained the connection string, open the configuration file on the Jetson Nano:
 
 ```
 sudo nano /etc/iotedge/config.yaml
@@ -169,9 +165,10 @@ Look in the response for:
 "connectionState": "Connected"
 ```
 
-**More details on setting up Azue IoT Edge on the Jetson Nano**
-- [Register an IoT Edge device on MS Docs](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device)
+**More details on setting up Azure IoT Edge on the Jetson Nano**
+- [Register an IoT Edge device on MS Docs](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device?WT.mc_id=aiapril-blog-heboelma)
 - [You can find an extended tutorial here](https://dev.to/azure/getting-started-with-iot-edge-development-on-nvidia-jetson-devices-2dfl)
+
 
 
 ### 2.3 Enable GPU support in Docker
@@ -225,7 +222,7 @@ newgrp docker
 sudo reboot
 ``` 
 
-**Test you GPU support**      
+**Test your GPU support**      
 ```
 docker run -it jitteam/devicequery ./deviceQuery
 ```
@@ -236,42 +233,47 @@ The response should look like this:
   
 Now you are ready to run Docker containers that support Tensorflow with GPU.
 
+
+
 ## 3. Create the IoT Edge modules
 
-Start with cloning the repository that contains the IoT Edge modules and deployment config.
+Start with cloning the repository that contains the sample IoT Edge modules and deployment config.
+
 ```
-mkdir IoTEdgeModules
-cd IoTEdgeModules
 git clone https://github.com/hnky/iot-edge-custom-vision-jetson-nano
 ```
 
-The repo contains the follow structure:
-- Modules => The folder that holds 3 IoT Edge modules
+The repo has the following structure:
+- modules => The folder that holds 3 IoT Edge modules
 - deployment.template.json => Template from which the deployment config is created.
 - .env => your secrets
 
+*Building the containers can take a while*
+
 
 **Login to your ACR**
+First we need to login to our Container Registery on the Jetson Nano
 ```
-docker login {your container registry name}.azurecr.io
+docker login [container registry name].azurecr.io
 ```
-
 
 
 ### 3.1 Custom Vision Module 
-This module container an application that exposes a model created with the Custom Vision Service through an API on port 80. This container contains a simple model with 3 classes: Apple, Banana or Negative.
+This module contains a small webserver that exposes a model created with the Azure Custom Vision service through an API on port 80. This container contains a simple model with 3 classes: Apple, Banana or Negative.
 
 **Build the container and push to ACR**
 ```
-cd Modules/CustomVisionModule
-docker build . -f Dockerfile.arm64v8 -t AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
-docker push AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
+cd modules/CustomVisionModule
+docker build . -f Dockerfile.arm64v8 -t [container registry name].azurecr.io/customvisionmodule:latest-arm64v8
+docker push [container registry name].azurecr.io/customvisionmodule:latest-arm64v8
 ```
 
 **Test the container**
 ```
-docker run -p 127.0.0.1:80:80 -d AIAprilACR.azurecr.io/customvisionmodule:latest-arm64v8
+# Run the container
+docker run -p 127.0.0.1:80:80 -d [container registry name].azurecr.io/customvisionmodule:latest-arm64v8
 
+# Send a test image of a banana to the containers
 curl -X POST http://127.0.0.1/url -d '{ "url": "https://www.wievultuwbroodtrommel.nl/205-large_default/banaan.jpg"}'
 ```
 
@@ -281,30 +283,32 @@ curl -X POST http://127.0.0.1/url -d '{ "url": "https://www.wievultuwbroodtromme
 docker container list
 
 # Stop the container
-docker container stop {container id}
+docker container stop [container id]
 ```
 
 **Learn more**
 If you want to learn how to create your own model and run it as a container on the Jetson Nano you can read 
-[Read more](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f)
+[this blog ](https://medium.com/microsoftazure/running-a-gpu-enabled-azure-custom-vision-docker-container-on-a-nvidia-jetson-nano-db8747b00b4f).
 
 
 ### 3.2 Camera Module 
-A module 2 that grabs camera frames, send the images to the computer vision module and put the result on the local IoT hub.
+This module grabs the camera frames and send the images to the Computer vision module and put the result on the local IoT hub.
 ```
-cd Modules/CameraModule
-docker build . -f Dockerfile.arm64v8 -t AIAprilACR.azurecr.io/cameramodule:latest-arm64v8
-docker push AIAprilACR.azurecr.io/cameramodule:latest-arm64v8
+cd modules/CameraModule
+docker build . -f Dockerfile.arm64v8 -t [container registry name].azurecr.io/cameramodule:latest-arm64v8
+docker push [container registry name].azurecr.io/cameramodule:latest-arm64v8
 ```
 
 
-### 3.3 The Alert Module 
-that grabs the results of the local IoT hub and send it to the IoT hub in Azure
+### 3.3 Alert Module 
+This model grabs the result of the local IoT hub and send it to the IoT hub in Azure if the treshold of 60% is reached for one of the classes.
 ```
-cd Modules/AlertModule
-docker build . -f Dockerfile.arm64v8 -t AIAprilACR.azurecr.io/alertmodule:latest-arm64v8
-docker push AIAprilACR.azurecr.io/alertmodule:latest-arm64v8
+cd modules/AlertModule
+docker build . -f Dockerfile.arm64v8 -t [container registry name].azurecr.io/alertmodule:latest-arm64v8
+docker push [container registry name].azurecr.io/alertmodule:latest-arm64v8
 ```
+
+
 
 
 ## 4. Deploy the modules to the IoT Edge
@@ -327,33 +331,75 @@ Copy the generated manifest file 'config/deployment.config' to your computer run
 az iot edge set-modules --device-id [device id] --hub-name [hub name] --content deployment.config
 ```
 
-```
-az iot hub module-identity list --device-id [device id] --hub-name [hub name]
-``` 
-
-On the Jetson Nano  
+Check on the Jetson Nano if the modules are up and running.
 ```
 iotedge list
 ```
 
-Run the command and see the output of the alerting module.
+To see the messages that the alert module is sending you can use the command below 
 ```
 iotedge logs alert-module
 ```
 
-To view the output of the camera open a webbrowser and enter the ip of the Jetson Nano on port 5012. You will see a small preview of the captured frame.
-
-http://192.168.178.31:5012/
-
+To view the output of the camera-module you can open a webbrowser and enter the ip of the Jetson Nano on port 5012 (http://x.x.x.x:5012/
+). You will see a small preview of the captured frame.
 
 
+**Learn more about module composition and deployment**
+- [Learn how to deploy modules and establish routes in IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition?WT.mc_id=aiapril-blog-heboelma)
+- [Develop your own IoT Edge modules](https://docs.microsoft.com/azure/iot-edge/module-development?WT.mc_id=aiapril-blog-heboelma)
+- [Deploy Azure IoT Edge modules with Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli?WT.mc_id=aiapril-blog-heboelma)
 
 
-**Learn more in dept**
-- https://docs.microsoft.com/en-us/azure/iot-edge/module-composition
-- https://docs.microsoft.com/en-us/azure/iot-edge/module-development
-- https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-modules-cli
-- https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor-cli
+
+## 5. Create a Logic app that send an Alert
+
+### 5.1 Create a logic app resource
+
+
+
+
+
+
+```
+[
+  {
+    "id": "fc52510d-e9b7-da86-c7af-c05b7b820554",
+    "topic": "/SUBSCRIPTIONS/431DBAE5-40CA-438A-8DAF-77D7D5580B41/RESOURCEGROUPS/AIAPRIL_IOT/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/AIAPRILIOTHUB",
+    "subject": "devices/AIAprilDevice/alert-module",
+    "eventType": "Microsoft.Devices.DeviceTelemetry",
+    "eventTime": "2020-04-19T18:52:03.247Z",
+    "data": {
+      "properties": {},
+      "systemProperties": {
+        "correlation-id": "test-1234",
+        "message-id": "d2b805e5-cef5-4eea-a9fc-536516408bfd",
+        "iothub-content-type": "application/json",
+        "iothub-content-encoding": "utf-8",
+        "iothub-connection-device-id": "AIAprilDevice",
+        "iothub-connection-module-id": "alert-module",
+        "iothub-connection-auth-method": "{\"scope\":\"module\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+        "iothub-connection-auth-generation-id": "637228229021652362",
+        "iothub-enqueuedtime": "2020-04-19T18:52:03.247Z",
+        "iothub-message-source": "Telemetry"
+      },
+      "body": {
+        "tag": "Apple"
+      }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1"
+  }
+]
+```
+
+
+
+
+
+## Continue learning
+
+- [Tutorial: Send email notifications about Azure IoT Hub events using Event Grid and Logic Apps](https://docs.microsoft.com/en-us/azure/event-grid/publish-iot-hub-events-to-logic-apps?WT.mc_id=aiapril-blog-heboelma)
 
 
 **Further reading**
