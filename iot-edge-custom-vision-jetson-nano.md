@@ -356,10 +356,38 @@ To view the output of the camera-module you can open a webbrowser and enter the 
 
 ### 5.1 Create a logic app resource
 
+In the Azure portal, select Create a resource, then type "logic app" in the search box and select return. Select Logic App from the results.
+dd
 
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-001.jpg)
+  
+- On the next screen, select Create.
 
+- Give your logic app a name that's unique in your subscription, then select the same subscription, resource group, and location as your IoT hub.
 
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-002.jpg)
 
+- Select Create.
+
+- Once the resource is created, navigate to your logic app. To do this, select Resource groups, then select the resource group you created for this tutorial. Then find the logic app in the list of resources and select it.
+
+- In the Logic Apps Designer, page down to see Templates. Choose Blank Logic App so that you can build your logic app from scratch.
+
+**Select a trigger**
+
+A trigger is a specific event that starts your logic app. For this tutorial, the trigger that sets off the workflow is receiving a request over HTTP.
+
+- In the connectors and triggers search bar, type HTTP.
+
+- Select Request - When an HTTP request is received as the trigger.
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-003.jpg)
+
+- Select Use sample payload to generate schema.
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-004.jpg)
+
+-Paste the following sample JSON code into the text box, then select Done:
 
 ```
 [
@@ -392,7 +420,48 @@ To view the output of the camera-module you can open a webbrowser and enter the 
   }
 ]
 ```
+- You may receive a pop-up notification that says, Remember to include a Content-Type header set to application/json in your request. You can safely ignore this suggestion, and move on to the next section.
 
+**Create an action**
+
+Actions are any steps that occur after the trigger starts the logic app workflow. For this tutorial, the action is to send an email notification from your email provider.
+
+- Select  New step. This opens a window to Choose an action.
+- Search for Email.
+- Based on your email provider, find and select the matching connector. This tutorial uses Office 365 Outlook. The steps for other email providers are similar.
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-005.jpg)
+
+- Save your logic app.
+
+**Copy the HTTP URL**
+
+Before you leave the Logic Apps Designer, copy the URL that your logic apps is listening to for a trigger. You use this URL to configure Event Grid.
+
+- Expand the When a HTTP request is received trigger configuration box by clicking on it.
+- Copy the value of HTTP POST URL by selecting the copy button next to it.
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-006.jpg)
+
+### 5.3 Configure subscription for IoT Hub events
+
+In this section, you configure your IoT Hub to publish events as they occur.
+
+- In the Azure portal, navigate to your IoT hub. You can do this by selecting Resource groups, then select the resource group for this tutorial, and then select your IoT hub from the list of resources.
+
+- Select Events and Select Event subscription.
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-007.jpg)
+
+- Create the event subscription with the following values:
+
+Event Types, uncheck all of the choices except **Device Telemetry**
+
+- Endpoint Details: Select Endpoint Type as Web Hook and select select an endpoint and paste the URL that you copied from your logic app and confirm selection.
+
+- 
+
+![](https://raw.githubusercontent.com/hnky/blog/master/images/login-007.jpg)
 
 
 
