@@ -461,7 +461,7 @@ Event Types, uncheck all of the choices except **Device Telemetry**
 
 - 
 
-![](https://raw.githubusercontent.com/hnky/blog/master/images/logic-007.jpg)
+![](https://raw.githubusercontent.com/hnky/blog/master/images/logic-008.jpg)
 
 
 
