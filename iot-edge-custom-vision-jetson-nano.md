@@ -1,14 +1,14 @@
 # Create your own vision alerting system with IoT Edge, Azure Custom Vision and a Jetson Nano
 
-In this article I will guide you through the steps needed to create your own object alerting system running on an edge device. For this we will use a NVidia Jetson Nano, the Azure Custom Vision service and Azure IoT Edge.
+In this article I will guide you through the steps needed to create your own object alerting system running on an edge device. For this we will use an NVidia Jetson Nano, the Azure Custom Vision service and Azure IoT Edge.
 
 The goal is to process the camera frames locally on the Jetson Nano and only send a message to the cloud when the detected object hits a certain confidence threshold.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/ai-vision.jpg)
 
 **Requirements before you start:**
-- You need a [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
-- An USB camera.
+- You need an [Nvidia Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+- A USB camera.
 - An Azure Subscription ([Get started for free here](https://azure.microsoft.com/en-us/free/?WT.mc_id=aiapril-blog-heboelma))
 
 
@@ -17,9 +17,9 @@ To get started we need to setup a few resources in Azure. For this we are going 
 
 
 ### 1.1 Create an Azure IoT Hub
-The first resources we need is an IoT Hub. We will use this Hub to communicate with our Edge Device. It will give us the ability to deploy our IoT Edge models to the device and give the Edge device the ability to send messages back to the cloud. 
+The first resource we need is an Azure IoT Hub. We will use this to communicate with our Edge Device. It will give us the ability to deploy our IoT Edge models to the device and give the Edge device the ability to send messages back to the cloud. 
 
-**Create a Resource group**
+**Create a Resource Group**
 ```
 az group create --name [resource group name] --location westeurope
 ```
@@ -31,7 +31,7 @@ az iot hub create --name [iot hub name] --resource-group [resource group name] -
 
 
 ### 1.2 Create an Azure Container Registry
-The second resource we need to create is an Azure Container Registry. In this container registry we will store our IoT Edge modules
+The second resource we need to create is an Azure Container Registry (ACR). In this container registry we will store our IoT Edge modules
 
 **Create an Azure Container Registry**    
 ```
@@ -193,7 +193,7 @@ sudo apt-get dist-upgrade
 ```
 
 **Add current user to docker group**   
-Add current user to docker group to use docker command without sudo, 
+Add a current user to the docker group to use docker commands without sudo, 
 following this guide: https://docs.docker.com/install/linux/linux-postinstall/. 
 ```
 sudo groupadd docker
@@ -236,13 +236,13 @@ The repo has the following structure:
 
 
 **Login to your ACR**
-First we need to login to our Container Registery on the Jetson Nano
+First we need to login to our container registry on the Jetson Nano
 ```
 docker login [container registry name].azurecr.io
 ```
 
 
-### 3.1 Custom Vision Module 
+### 3.1 Azure Custom Vision Module 
 This module contains a small webserver that exposes a model created with the Azure Custom Vision service through an API on port 80. This container contains a simple model with 3 classes: Apple, Banana or Negative.
 
 **Build the container and push to ACR**
@@ -276,7 +276,7 @@ If you want to learn how to create your own model and run it as a container on t
 
 
 ### 3.2 Camera Module 
-This module grabs the camera frames and send the images to the Computer vision module and put the result on the local IoT hub.
+This module grabs the camera frames and sends the images to the Computer Vision module and puts the result in the local IoT hub.
 ```
 cd modules/CameraModule
 docker build . -f Dockerfile.arm64v8 -t [container registry name].azurecr.io/cameramodule:latest-arm64v8
@@ -285,7 +285,7 @@ docker push [container registry name].azurecr.io/cameramodule:latest-arm64v8
 
 
 ### 3.3 Alert Module 
-This model grabs the result of the local IoT hub and send it to the IoT hub in Azure if the treshold of 60% is reached for one of the classes.
+This module grabs the result of the local IoT hub and sends it to the Azure IoT hub if the threshold of 60% is reached for one of the classes (Apple, Banana or Negative).
 ```
 cd modules/AlertModule
 docker build . -f Dockerfile.arm64v8 -t [container registry name].azurecr.io/alertmodule:latest-arm64v8
@@ -320,13 +320,12 @@ Check on the Jetson Nano if the modules are up and running.
 iotedge list
 ```
 
-To see the messages that the alert module is sending you can use the command below 
+To see the messages that the alert module is sending, you can use the command below 
 ```
 iotedge logs alert-module
 ```
 
-To view the output of the camera-module you can open a webbrowser and enter the ip of the Jetson Nano on port 5012 (http://x.x.x.x:5012/
-). You will see a small preview of the captured frame.
+To view the output of the camera module you can open a web browser and enter the IP address of the Jetson Nano on port 5012 (http://x.x.x.x:5012/). You will see a small preview of the captured frame.
 
 
 **Learn more about module composition and deployment**
@@ -336,12 +335,11 @@ To view the output of the camera-module you can open a webbrowser and enter the 
 
 
 
-## 5. Create a Logic app that send an Alert
+## 5. Create a Logic app that sends an Alert
 
 ### 5.1 Create a logic app resource
 
-In the Azure portal, select Create a resource, then type "logic app" in the search box and select return. Select Logic App from the results.
-dd
+In the Azure portal, select 'Create a resource', then type "logic app" in the search box and select return. Select Logic App from the results.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/logic-001.jpg)
   
@@ -355,7 +353,7 @@ dd
 
 - Once the resource is created, navigate to your logic app. To do this, select Resource groups, then select the resource group you created for this tutorial. Then find the logic app in the list of resources and select it.
 
-- In the Logic Apps Designer, page down to see Templates. Choose Blank Logic App so that you can build your logic app from scratch.
+- In the Logic Apps Designer, page down to see Templates. Choose 'Blank Logic App' so that you can build your logic app from scratch.
 
 **Select a trigger**
 
@@ -404,7 +402,7 @@ A trigger is a specific event that starts your logic app. For this tutorial, the
   }
 ]
 ```
-- You may receive a pop-up notification that says, Remember to include a Content-Type header set to application/json in your request. You can safely ignore this suggestion, and move on to the next section.
+- You may receive a pop-up notification that says, 'Remember to include a Content-Type header set to application/json in your request.' You can safely ignore this suggestion, and move on to the next section.
 
 **Create an action**
 
@@ -420,16 +418,16 @@ Actions are any steps that occur after the trigger starts the logic app workflow
 
 **Copy the HTTP URL**
 
-Before you leave the Logic Apps Designer, copy the URL that your logic apps is listening to for a trigger. You use this URL to configure Event Grid.
+Before you leave the Logic Apps Designer, copy the URL that your logic app is listening to for a trigger. You use this URL to configure Event Grid.
 
-- Expand the When a HTTP request is received trigger configuration box by clicking on it.
+- Expand the 'When a HTTP request is received trigger' configuration box by clicking on it.
 - Copy the value of HTTP POST URL by selecting the copy button next to it.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/logic-006.jpg)
 
 ### 5.3 Configure subscription for IoT Hub events
 
-In this section, you configure your IoT Hub to publish events as they occur.
+In this section, you will configure your IoT Hub to publish events as they occur.
 
 - In the Azure portal, navigate to your IoT hub. You can do this by selecting Resource groups, then select the resource group for this tutorial, and then select your IoT hub from the list of resources.
 
@@ -441,7 +439,7 @@ In this section, you configure your IoT Hub to publish events as they occur.
 
 Event Types, uncheck all of the choices except **Device Telemetry**
 
-- Endpoint Details: Select Endpoint Type as Web Hook and select select an endpoint and paste the URL that you copied from your logic app and confirm selection.
+- Endpoint Details: Select Endpoint Type as Web Hook, select an endpoint and paste the URL that you copied from your logic app. Finally confirm selection.
 
 - 
 
