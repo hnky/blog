@@ -1,8 +1,8 @@
 # Create your own vision alerting system with IoT Edge, Azure Custom Vision and a Jetson Nano
 
-In this article I will guide you throught the steps needed to create your own object alertings system running on an edge device. For this we will use a NVidia Jetson Nano, the Azure Custom Vision service and Azure IoT Edge.
+In this article I will guide you through the steps needed to create your own object alerting system running on an edge device. For this we will use a NVidia Jetson Nano, the Azure Custom Vision service and Azure IoT Edge.
 
-The goal is to process the camera frames localy on the Jetson Nano and only send a message to the cloud when the detected object hits a certain confidence threshold.
+The goal is to process the camera frames locally on the Jetson Nano and only send a message to the cloud when the detected object hits a certain confidence threshold.
 
 ![](https://raw.githubusercontent.com/hnky/blog/master/images/ai-vision.jpg)
 
