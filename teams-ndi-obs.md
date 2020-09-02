@@ -14,9 +14,9 @@ The path below shows how to enable this for everyone in the organization. *(Your
 https://admin.teams.microsoft.com/
 - Navigate to Meetings > Meeting policies
 - Click on the 'Global' (Org-wide default)
-![NDI Policy](images/ndi/ndi-policy.png)
+![NDI Policy](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/ndi-policy.png)
 - In the Global Policy switch 'Allow NDI streaming' on.
-![Enable NDI Policy](images/ndi/ndi-policy-2.png)
+![Enable NDI Policy](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/ndi-policy-2.png)
 
 > [Read more](https://docs.microsoft.com/en-US/microsoftteams/meeting-policies-in-teams?WT.mc_id=teamsndi-blog-heboelma#bkaudioandvideo) about Managing meeting policies.
 
@@ -28,10 +28,10 @@ When the policy is enabled every user has to activate NDI in settings, before a 
 To enable to policy open settings.
 - Click on the profile image in the top right
 - Click on settings
-![Teams Setting](images/ndi/settings.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/settings.png)
 - Open the Permissions settings
 - Switch the "Network Device Interface (NDI)" on
-![Teams Setting](images/ndi/settings-2.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/settings-2.png)
 
 ### Tips & Tricks
 - The video quality improves if nobody shares a screen.
@@ -57,14 +57,14 @@ In this section we are going to create a scene in OBS with NDI source from a Tea
   - Select "Create new"
   - Enter a name like "Teams Guest"
   - Click OK
-![Teams Setting](images/ndi/obs-add-source.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/obs-add-source.png)
 - Configure the properties
     - Source name: Select the NDI Source from MS Team
     - Bandwidth: Select Highest
     - Sync: Select Source Timing (this syncs the audio / video)
     - Check Allow hardware acceleration (this will use your GPU if available)
     - Latency Mode: Select Low (With low there is almost no delay)
-![Teams Setting](images/ndi/obs-add-source-2.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/obs-add-source-2.png)
 
 ### Configuring the NDI Source
 A feature in Teams is that the video adjusts to the bandwidth available. This means in OBS that the resolution of the NDI source can change during a broadcast. Also the resolution of the video scales down if a screen is sharing. 
@@ -73,14 +73,14 @@ This results in the unwanted behavior that the source is getting bigger and smal
 - Right click on the source
 - Expand Transform
 - Select 'Edit Transform'
-![Teams Setting](images/ndi/obs-transform-source.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/obs-transform-source.png)
 - Change the 'Bounding Box Type' to 'Scale to inner bounds'
 - Click close to save
-![Teams Setting](images/ndi/obs-transform-box.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/obs-transform-box.png)
 
 You can repeat these steps to add more sources for other speakers and a screen share.
 
-![Teams Setting](images/ndi/obs-final.png)
+![Teams Setting](https://raw.githubusercontent.com/hnky/blog/master/images/ndi/obs-final.png)
 
 ### Tips & Tricks
 - **Audio**
