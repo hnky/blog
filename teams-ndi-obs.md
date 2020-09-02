@@ -1,6 +1,8 @@
 # Online events with Teams NDI and OBS
 
-A few weeks ago the NDI feature in Teams became publicly available. This is great news and gives event organizers the opportunity to use Teams as a conversation platform and use other tool, like OBS of vMix to manage the output and stream it to a platform of their choose like YouTube.
+A few weeks ago the NDI feature in Teams became publicly available. This is great news and gives event organizers the opportunity to use Teams as a conversation platform and use other tool, like OBS of vMix to manage and brand the output and stream it to a platform of their choosing like YouTube or Vimeo.
+
+> [Learn more](https://www.ndi.tv/) about NDI
 
 ## Enable NDI in Teams
 To make NDI available for users to use an administrator has to enable this in a Teams Policy and the user has to enable it in the Teams Client.
@@ -91,6 +93,6 @@ For every person in Teams you get an individual NDI Feed. A good thing to know i
 ## Continue learning:
 - [Everything about Teams on Microsoft Docs](https://docs.microsoft.com/en-us/MicrosoftTeams/?WT.mc_id=teamsndi-blog-heboelma)
 - [Microsoft Teams Learning Paths](https://docs.microsoft.com/en-us/learn/browse/?WT.mc_id=teamsndi-blog-heboelma&expanded=m365&filter-products=teams&products=office-teams)
-- []
+- [Online meetups with OBS and Skype](https://www.henkboelman.com/articles/online-meetups-with-obs-and-skype/)
 - [Provisioning Azure VM as a Streamer Machine with Chocolatey](https://dev.to/azure/provisioning-azure-vm-as-a-streamer-machine-with-chocolatey-2pha)
 - [Streaming a Community Event on YouTube](https://blog.maartenballiauw.be/post/2020/04/02/streaming-a-community-event-on-youtube-sharing-the-technologies-and-learnings-from-virtual-azure-community-day.html)
