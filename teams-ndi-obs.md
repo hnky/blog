@@ -1,11 +1,11 @@
 # Online events with Teams NDI and OBS
 
-A few weeks ago the NDI feature in Teams became publicly available. This is great news and gives event organizers the opportunity to use Teams as a conversation platform and use other tool, like OBS of vMix to manage and brand the output and stream it to a platform of their choosing like YouTube or Vimeo.
+A few weeks ago the NDI feature in Teams became publicly available. This is great news as it gives event organizers the opportunity to use Teams as a conversation platform and use other tool, like OBS of vMix to manage and brand the output and stream it to a platform of their choosing, like YouTube or Vimeo.
 
 > [Learn more](https://www.ndi.tv/) about NDI
 
 ## Enable NDI in Teams
-To make NDI available for users to use an administrator has to enable this in a Teams Policy and the user has to enable it in the Teams Client.
+To make NDI available for users, an administrator has to enable this in a Teams Policy and the user has to enable it in the Teams Client.
 
 ### Enable NDI in the Meeting Policy
 The path below shows how to enable this for everyone in the organization. *(Your Teams admin will know how to implement this for a smaller group)*
@@ -51,7 +51,7 @@ In this part we will go through the minimal steps that are needed to get the Tea
 ### Setup a NDI Source in OBS
 In this section we are going to create a scene in OBS with NDI source from a Team Meeting.
 
-- First you have to start a Team Meeting with at least one guest.
+- First you have to start a Teams Meeting with at least one guest.
 - Create a new NDI Source in OBS
   - Click the + icon under sources
   - Select "Create new"
@@ -67,7 +67,7 @@ In this section we are going to create a scene in OBS with NDI source from a Tea
 ![Teams Setting](images/ndi/obs-add-source-2.png)
 
 ### Configuring the NDI Source
-A feature in Teams is that the video adjust to the bandwidth available. This means in OBS that the resolution of the NDI source can change during a broadcast. Also the resolution of the video scales down if a screen is sharing. 
+A feature in Teams is that the video adjusts to the bandwidth available. This means in OBS that the resolution of the NDI source can change during a broadcast. Also the resolution of the video scales down if a screen is sharing. 
 This results in the unwanted behavior that the source is getting bigger and smaller all the time. To avoid this you want to lock the size of the source and let the video scale to the inner bounds of the source.
 
 - Right click on the source
@@ -78,17 +78,17 @@ This results in the unwanted behavior that the source is getting bigger and smal
 - Click close to save
 ![Teams Setting](images/ndi/obs-transform-box.png)
 
-You can repeat this steps to add more sources for other speakers and a screen share.
+You can repeat these steps to add more sources for other speakers and a screen share.
 
 ![Teams Setting](images/ndi/obs-final.png)
 
 ### Tips & Tricks
 - **Audio**
-For every person in Teams you get an individual NDI Feed. A good thing to know is that in that NDI feed is:
- - The video of the person (Changeable resolution)
+For every person in Teams you get an individual NDI Feed. A good thing to know is that each NDI feed contains:
+ - The video of the person (changeable resolution)
  - The audio stream of the whole Teams conversation.
 
-> So don't forget, in OBS you can always hear everything that is going on in the Team conversation.
+> So don't forget, in OBS you can always hear everything that is going on in the Teams conversation.
 
 ## Continue learning:
 - [Everything about Teams on Microsoft Docs](https://docs.microsoft.com/en-us/MicrosoftTeams/?WT.mc_id=teamsndi-blog-heboelma)
