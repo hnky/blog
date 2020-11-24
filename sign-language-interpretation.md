@@ -73,6 +73,7 @@ Plan a debriefing session with your interpreting team to discuss how you can imp
 When publishing your event recordings, clearly state  the availability of the sign language interpretation so deaf viewers are able to find the accessible information.  
 
 ## Resources
-•	[Signed language interpretation at your virtual meetings by Maya de Wit](https://www.mayadewit.nl/news/2020/9/17/signed-language-interpretation-at-your-virtual-meetings)
-•	[Accessible Events by Jan Schenk](https://github.com/jansche/AccessibleEvents)
+- [Signed language interpretation at your virtual meetings by Maya de Wit](https://www.mayadewit.nl/news/2020/9/17/signed-language-interpretation-at-your-virtual-meetings)
+- [Accessible Events by Jan Schenk](https://github.com/jansche/AccessibleEvents)
+- [Your Online Event Should Have Live Captions by Em Lazer-Walker](https://blog.lazerwalker.com/2020/07/20/captions.html)
 
