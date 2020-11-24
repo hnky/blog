@@ -6,7 +6,7 @@ I was a complete unaware of sign languages and interpretation before I started o
 
 ## Things I learned
 
-> A person providing sign language interpretation is called a sign language interpreter Persons who ‘speak’ a sign language are called signers. 
+> A person providing sign language interpretation is called a sign language interpreter. Persons who ‘speak’ a sign language are called signers. 
 
 ### Sign language is not just one language
 Pick the right language for your audience. I thought sign language is universal, turned out that this was not the case. Each country has their own national sign language and sometimes also regional signed languages.
