@@ -6,13 +6,14 @@ I was a complete unaware of sign languages and interpretation before I started o
 
 ## Things I learned
 
+> A person providing sign language interpretation is called a sign language interpreter Persons who ‘speak’ a sign language are called signers. 
+
 ### Sign language is not just one language
 Pick the right language for your audience. I thought sign language is universal, turned out that this was not the case. Each country has their own national sign language and sometimes also regional signed languages.
 
 The first step for your event is to ask yourself, who  is the audience and where are the located. If your audience is mainly in the United States, you can go with American Sign Language (ASL). If your audience is Dutch go with NGT (Dutch Sign Language). However, in these times most of the online events and especially tech events reach a worldwide audience, so picking a local sign language excludes a lot of people by default. Luckily there is [International Sign](https://wfdeaf.org/news/resources/faq-international-sign/).
 
-*International Sign (IS) is constructed by combining common elements and lexical signs from different sign languages. IS is used in a variety of different contexts, particularly at international meetings, and informally when travelling and socializing. International Sign is a term used by the World Federation of the Deaf (WFD) and other international organizations. Deaf people typically know only one sign language. Signers from differing countries may use IS spontaneously with each other, with relative success. This communicative success is linked to various factors. First, people who sign in IS have a certain amount of shared contextual knowledge. Secondly, signers may take advantage of shared knowledge of a spoken language, such as English. Thirdly, communication is made easier by the use of iconic signs and visual resources.
-*
+*International Sign (IS) is constructed by combining common elements and lexical signs from different sign languages. IS is used in a variety of different contexts, particularly at international meetings, and informally when travelling and socializing. International Sign is a term used by the World Federation of the Deaf (WFD) and other international organizations. Deaf people typically know only one sign language. Signers from differing countries may use IS spontaneously with each other, with relative success. This communicative success is linked to various factors. First, people who sign in IS have a certain amount of shared contextual knowledge. Secondly, signers may take advantage of shared knowledge of a spoken language, such as English. Thirdly, communication is made easier by the use of iconic signs and visual resources.*
 
 ### You need more than one interpreter
 Interpreting is an exhausting activity – both physically as mentally. Keeping up with the story, context, jargon, references is no easy feat. This is especially so when interpreting a conversation (or banter) or a Q&A session. You always need at least a team of two interpreters per language combination, and if the event is longer than two hours you would need at least a team of three interpreters. Ask the interpreter consultant the recommended number of interpreters needed for your event. More importantly, check if the interpreters you want to hire are accredited, you can ask for their credentials.
