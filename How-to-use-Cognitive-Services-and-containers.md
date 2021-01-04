@@ -48,6 +48,8 @@
 - Deploy the container
 - Use the container endpoint as you would use the api resource
 
+Optional you can mount your own storage and connect [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)?WT.mc_id=aiml-12167-heboelma.
+
 
 ### Run on your local Machine
 *Tutorial for local machine*
@@ -59,9 +61,9 @@
 *Tutorial for AKS machine*
 
 ## Further reading
-- [Getting started with Azure Cognitive Services in containers](https://azure.microsoft.com/blog/getting-started-with-azure-cognitive-services-in-containers/)
-- [Bringing AI to the edge](https://azure.microsoft.com/blog/bringing-ai-to-the-edge/)
-- [Running Cognitive Service containers](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
+- [Getting started with Azure Cognitive Services in containers](https://azure.microsoft.com/blog/getting-started-with-azure-cognitive-services-in-containers/?WT.mc_id=aiml-12167-heboelma)
+- [Bringing AI to the edge](https://azure.microsoft.com/blog/bringing-ai-to-the-edge/?WT.mc_id=aiml-12167-heboelma)
+- [Running Cognitive Service containers](https://azure.microsoft.com/blog/running-cognitive-service-containers/?WT.mc_id=aiml-12167-heboelma)
 
 ## Learn more on Microsoft Docs
 
