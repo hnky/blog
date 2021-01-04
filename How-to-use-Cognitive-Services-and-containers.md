@@ -49,7 +49,7 @@
 - Use the container endpoint as you would use the api resource
 
 
-### Run on you local Machine
+### Run on your local Machine
 *Tutorial for local machine*
 
 ### Azure Container Instance
