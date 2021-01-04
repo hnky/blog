@@ -32,6 +32,8 @@ Container support is currently available for a subset of Azure Cognitive Service
 | -- | -- | -- | -- |
 | Anomaly Detector | Anomaly Detector | [Documentation](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/anomaly-detector-container-howto?WT.mc_id=aiml-12167-heboelma) |
 | Computer Vision | Read OCR (Optical Character Recognition) | [Documentation](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers?WT.mc_id=aiml-12167-heboelma)
+| | Spatial Analysis | [Documentation](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container?tabs=azure-stack-edge&WT.mc_id=aiml-12167-heboelma) 
+
 | Form Recognizer | Form Recognizer | [Documentation](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-container-howto?) |
 | Language Understanding | Language Understanding | [Documentation](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto?WT.mc_id=aiml-12167-heboelma)|  
 | Speech | Custom Speech-to-text | [Documentation](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto?tabs=cstt&WT.mc_id=aiml-12167-heboelma) |
