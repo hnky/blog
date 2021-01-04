@@ -43,6 +43,7 @@ Container support is currently available for a subset of Azure Cognitive Service
 | Text Analytics | Key Phrase Extraction | [Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers?tabs=keyphrase&WT.mc_id=aiml-12167-heboelma)
 | | Text language detection | [Documentation](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers?tabs=language&WT.mc_id=aiml-12167-heboelma) |
 | | Sentiment analysis | [Documentation](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers?tabs=sentiment&WT.mc_id=aiml-12167-heboelma) |
+| Face | Face |  [Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-how-to-install-containers?&WT.mc_id=aiml-12167-heboelma)
 
 
 ### Billing
