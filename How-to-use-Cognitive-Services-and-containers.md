@@ -6,7 +6,8 @@
 
 ## Cognitive Services in containers
 *Intro to cognitive services in containers*
-* start copied from docs*  
+
+*start copied from docs*  
 Container support in Azure Cognitive Services allows developers to use the same rich APIs that are available in Azure, and enables flexibility in where to deploy and host the services that come with Docker containers.
 
 Azure Cognitive Services provides several Docker containers that let you use the same APIs that are available in Azure, on-premises. Using these containers gives you the flexibility to bring Cognitive Services closer to your data for compliance, security or other operational reasons.
