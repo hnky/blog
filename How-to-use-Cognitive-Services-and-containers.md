@@ -2,7 +2,7 @@
 
 
 ## What are cognitive services
-*Intro to cognitive services*
+Azure Cognitive Services are cloud-based services with REST APIs and client library SDKs available to help you build cognitive intelligence into your applications. You can add cognitive features to your applications without having artificial intelligence (AI) or data science skills. Azure Cognitive Services comprise various AI services that enable you to build cognitive solutions that can see, hear, speak, understand, and even make decisions.
 
 ## Cognitive Services in containers
 *Intro to cognitive services in containers*
