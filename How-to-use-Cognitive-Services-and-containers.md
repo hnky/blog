@@ -1,17 +1,22 @@
 # How to use Cognitive Services and containers
 
 
-## What are cognitive services
+## What are Cognitive Services
 Azure Cognitive Services are cloud-based services that expose AI models through a REST API. These services enable you to add cognitive features, like object detection and speech recognition to your applications without having data science skills. By using the provided SDKs in the programming language of your choice you can create application that can see (Computer Vision), hear (Speech), speak (Speech), understand (Language), and even make decisions (Decision).
 
 ## Cognitive Services in containers
-Container support in Azure Cognitive Services allows developers to use the same rich APIs that are available in Azure, and enables flexibility in where to deploy and host the services that come with Docker containers.
+Azure Cognitive Service in containers gives developers the flexibility in where to deploy and host the services that come with Docker containers and keeping the same API experience as when they where hosted in the Azure.
 
-Azure Cognitive Services provides several Docker containers that let you use the same APIs that are available in Azure, on-premises. Using these containers gives you the flexibility to bring Cognitive Services closer to your data for compliance, security or other operational reasons.
+Using these containers gives you the flexibility to bring Cognitive Services closer to your data for compliance, security or other operational reasons.
 
-Containerization is an approach to software distribution in which an application or service, including its dependencies & configuration, is packaged together as a container image. With little or no modification, a container image can be deployed on a container host. Containers are isolated from each other and the underlying operating system, with a smaller footprint than a virtual machine. Containers can be instantiated from container images for short-term tasks, and removed when no longer needed.  
+>> Containerization is an approach to software distribution in which an application or service, including its dependencies & configuration, is packaged together as a container image. With little or no modification, a container image can be deployed on a container host. Containers are isolated from each other and the underlying operating system, with a smaller footprint than a virtual machine. Containers can be instantiated from container images for short-term tasks, and removed when no longer needed.  
+
+[Embed Video](https://www.youtube.com/watch?v=hdfbn4Q8jbo)
+
 
 ### When to use Cognitive Services in containers
+
+
 
 ### Features and benefits
 
