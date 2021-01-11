@@ -17,6 +17,14 @@ Using these containers gives you the flexibility to bring Cognitive Services clo
 
 ### When to use Cognitive Services in containers
 
+Running Cognitive Services in containers can be the solution for you if you have specific requirements or conttrainds making that make it impossible to run the services in Azure. But keep in mind it also adds an extra layer of complexity to your application, because you are now responsible for running and updating the container.
+
+### Bandwith limitations and connectivity
+A case where you choose for container could be, if your connection to Azure is not stable enought. For instance if you have 1000's of document on-prem and you want to run OCR. If you use the Computer Vision OCR endpoint in the cloud you would need to send all the documents to the end point in azure, while if you run the container localy you only need to send the billing information every 15 minutes to Azure.
+
+### Control over data
+INAn other case would be if you are building a low latency app.  and you want to do face recognition.
+
 
 
 ### Features and benefits
@@ -28,7 +36,9 @@ Using these containers gives you the flexibility to bring Cognitive Services clo
 **Control over model updates:** Flexibility in versioning and updating of models deployed in their solutions.
 Portable architecture: Enables the creation of a portable application architecture that can be deployed on Azure, on-premises and the edge. Containers can be deployed directly to Azure Kubernetes Service, Azure Container Instances, or to a Kubernetes cluster deployed to Azure Stack. For more information, see Deploy Kubernetes to Azure Stack.
 
-**High throughput / low latency:** Provide customers the ability to scale for high throughput and low latency requirements by enabling Cognitive Services to run physically close to their application logic and data. Containers do not cap transactions per second (TPS) and can be made to scale both up and out to handle demand if you provide the necessary hardware resources.
+**High throughput / low latency:** 
+Provide customers the ability to scale for high throughput and low latency requirements by enabling Cognitive Services to run physically close to their application logic and data. Containers do not cap transactions per second (TPS) and can be made to scale both up and out to handle demand if you provide the necessary hardware resources.
+
 
 **Scalability:** With the ever growing popularity of containerization and container orchestration software, such as Kubernetes; scalability is at the forefront of technological advancements. Building on a scalable cluster foundation, application development caters to high availability.
 
