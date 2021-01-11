@@ -26,8 +26,8 @@ Portable architecture: Enables the creation of a portable application architectu
 
 **Scalability:** With the ever growing popularity of containerization and container orchestration software, such as Kubernetes; scalability is at the forefront of technological advancements. Building on a scalable cluster foundation, application development caters to high availability.
 
-* end copied from docs*  
-
+### Use cases
+TBA
 
 ### Which services are availabe
 Container support is currently available for a subset of Azure Cognitive Services, including parts of:
@@ -60,10 +60,6 @@ Computer Vision
 Face
 LUIS
 Text Analytics
-
-
-### Use cases
-*List of some use cases why you want to use these sevices in containers vs api*
 
 
 ## How to use Cognitive Services in containers
