@@ -2,19 +2,19 @@
 
 
 ## What are cognitive services
-Azure Cognitive Services are cloud-based services with REST APIs and client library SDKs available to help you build cognitive intelligence into your applications. You can add cognitive features to your applications without having artificial intelligence (AI) or data science skills. Azure Cognitive Services comprise various AI services that enable you to build cognitive solutions that can see, hear, speak, understand, and even make decisions.
+Azure Cognitive Services are cloud-based services that expose AI models through a REST API. These services enable you to add cognitive features, like object detection and speech recognition to your applications without having data science skills. By using the provided SDKs in the programming language of your choice you can create application that can see (Computer Vision), hear (Speech), speak (Speech), understand (Language), and even make decisions (Decision).
 
 ## Cognitive Services in containers
-*Intro to cognitive services in containers*
-
-*start copied from docs*  
 Container support in Azure Cognitive Services allows developers to use the same rich APIs that are available in Azure, and enables flexibility in where to deploy and host the services that come with Docker containers.
 
 Azure Cognitive Services provides several Docker containers that let you use the same APIs that are available in Azure, on-premises. Using these containers gives you the flexibility to bring Cognitive Services closer to your data for compliance, security or other operational reasons.
 
 Containerization is an approach to software distribution in which an application or service, including its dependencies & configuration, is packaged together as a container image. With little or no modification, a container image can be deployed on a container host. Containers are isolated from each other and the underlying operating system, with a smaller footprint than a virtual machine. Containers can be instantiated from container images for short-term tasks, and removed when no longer needed.  
 
+### When to use Cognitive Services in containers
+
 ### Features and benefits
+
 **Immutable infrastructure:** Enable DevOps teams' to leverage a consistent and reliable set of known system parameters, while being able to adapt to change. Containers provide the flexibility to pivot within a predictable ecosystem and avoid configuration drift.
 
 **Control over data:** Choose where your data gets processed by Cognitive Services. This can be essential if you can't send data to the cloud but need access to Cognitive Services APIs. Support consistency in hybrid environments – across data, management, identity, and security.
@@ -26,8 +26,6 @@ Portable architecture: Enables the creation of a portable application architectu
 
 **Scalability:** With the ever growing popularity of containerization and container orchestration software, such as Kubernetes; scalability is at the forefront of technological advancements. Building on a scalable cluster foundation, application development caters to high availability.
 
-### Use cases
-TBA
 
 ### Which services are availabe
 Container support is currently available for a subset of Azure Cognitive Services, including parts of:
