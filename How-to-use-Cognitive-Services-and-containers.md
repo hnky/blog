@@ -9,7 +9,7 @@ Azure Cognitive Service in containers gives developers the flexibility in where 
 
 Using these containers gives you the flexibility to bring Cognitive Services closer to your data for compliance, security or other operational reasons.
 
-> **What are containers**
+> **What are containers**   
 > Containerization is an approach to software distribution in which an application or service, including its dependencies & configuration, is packaged together as a container image. With little or no modification, a container image can be deployed on a container host. Containers are isolated from each other and the underlying operating system, with a smaller footprint than a virtual machine. Containers can be instantiated from container images for short-term tasks, and removed when no longer needed.  
 
 [Embed Video](https://www.youtube.com/watch?v=hdfbn4Q8jbo)
