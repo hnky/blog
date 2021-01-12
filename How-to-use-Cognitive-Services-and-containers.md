@@ -148,7 +148,7 @@ To do this you first need to retrieve the url for the container. This can be don
 ```
 az container show --name speechcontainer --resource-group demo_rg --query ipAddress.fqdn -o json
 ```
-Navigate to the URL on port 5000. The url should look like this: *http://<container-name>.<region>.azurecontainer.io:5000/*
+Navigate to the URL on port 5000. The url should look like this: *http://<<container-name>>.<region>.azurecontainer.io:5000/*
 
 You will should see a screen like this:
 ![Homepage of a Cognitive Service Speech Container](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/container_is_running.png)
