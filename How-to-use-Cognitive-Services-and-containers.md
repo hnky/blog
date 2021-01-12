@@ -93,14 +93,37 @@ Text Analytics
 Optional you can mount your own storage and connect [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)?WT.mc_id=aiml-12167-heboelma.
 
 
-### Run on your local Machine
-*Tutorial for local machine*
+### 1. Create a resource group
+```
+Create a resource group
+az group create --name demo_rg --location westeurope
+```
 
-### Azure Container Instance
-*Tutorial for ACI machine*
+### 2. Create Cognitive Service resource
+```
+az cognitiveservices account create \
+    --name speech-resource \
+    --resource-group demo_rg \
+    --kind SpeechServices \
+    --sku F0 \
+    --location westeurope \
+    --yes
+```
 
-### Azure Kubernetes Services
-*Tutorial for AKS machine*
+### 3. Get the endpoint & API Key
+```
+az cognitiveservices account show --name speech-resource --resource-group demo_rg
+```
+
+```
+az cognitiveservices account keys list --name speech-resource --resource-group demo_rg
+```
+
+
+
+
+
+
 
 ## Further reading
 - [Getting started with Azure Cognitive Services in containers](https://azure.microsoft.com/blog/getting-started-with-azure-cognitive-services-in-containers/?WT.mc_id=aiml-12167-heboelma)
