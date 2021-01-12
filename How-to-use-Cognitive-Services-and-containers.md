@@ -1,5 +1,6 @@
 # How to use Cognitive Services and containers
 
+*intro*
 
 ## What are Cognitive Services
 Azure Cognitive Services are cloud-based services that expose AI models through a REST API. These services enable you to add cognitive features, like object detection and speech recognition to your applications without having data science skills. By using the provided SDKs in the programming language of your choice you can create application that can see (Computer Vision), hear (Speech), speak (Speech), understand (Language), and even make decisions (Decision).
@@ -15,17 +16,10 @@ Using these containers gives you the flexibility to bring Cognitive Services clo
 [Embed Video](https://www.youtube.com/watch?v=hdfbn4Q8jbo)
 
 
-### When to use Cognitive Services in containers
+## When to use Cognitive Services in containers?
+Running Cognitive Services in containers can be the solution for you if you have specific requirements or constraints making that make it impossible to run Cognitive services in Azure. The most common scenarios include connectivity and control over the data. If you are running Cognitive Services in Azure all the infrastructure is taken care of, running them in containers moves the infrastructure responsibility, like performance and updating the container, to you.
 
-Running Cognitive Services in containers can be the solution for you if you have specific requirements or conttrainds making that make it impossible to run the services in Azure. But keep in mind it also adds an extra layer of complexity to your application, because you are now responsible for running and updating the container.
-
-### Bandwith limitations and connectivity
 A case where you choose for container could be, if your connection to Azure is not stable enought. For instance if you have 1000's of document on-prem and you want to run OCR. If you use the Computer Vision OCR endpoint in the cloud you would need to send all the documents to the end point in azure, while if you run the container localy you only need to send the billing information every 15 minutes to Azure.
-
-### Control over data
-INAn other case would be if you are building a low latency app.  and you want to do face recognition.
-
-
 
 ### Features and benefits
 
@@ -38,7 +32,6 @@ Portable architecture: Enables the creation of a portable application architectu
 
 **High throughput / low latency:** 
 Provide customers the ability to scale for high throughput and low latency requirements by enabling Cognitive Services to run physically close to their application logic and data. Containers do not cap transactions per second (TPS) and can be made to scale both up and out to handle demand if you provide the necessary hardware resources.
-
 
 **Scalability:** With the ever growing popularity of containerization and container orchestration software, such as Kubernetes; scalability is at the forefront of technological advancements. Building on a scalable cluster foundation, application development caters to high availability.
 
@@ -67,15 +60,6 @@ Container support is currently available for a subset of Azure Cognitive Service
 
 ### Billing
 *copied from docs* The container needs the billing argument values to run. These values allow the container to connect to the billing endpoint. The container reports usage about every 10 to 15 minutes. If the container doesn't connect to Azure within the allowed time window, the container continues to run but doesn't serve queries until the billing endpoint is restored. The connection is attempted 10 times at the same time interval of 10 to 15 minutes. If it can't connect to the billing endpoint within the 10 tries, the container stops serving requests.
-
-In addition, some containers are supported in Cognitive Services All-In-One offering resource keys. You can create one single Cognitive Services All-In-One resource and use the same billing key across supported services for the following services:
-
-Computer Vision
-Face
-LUIS
-Text Analytics
-
-
 
 
 ## How to use Cognitive Services in containers
