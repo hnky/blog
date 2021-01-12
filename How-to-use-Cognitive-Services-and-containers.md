@@ -58,28 +58,26 @@ Container support is currently available for a subset of Azure Cognitive Service
 | Face | Face |  [Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-how-to-install-containers?&WT.mc_id=aiml-12167-heboelma)
 
 
-### Billing
-*copied from docs* The container needs the billing argument values to run. These values allow the container to connect to the billing endpoint. The container reports usage about every 10 to 15 minutes. If the container doesn't connect to Azure within the allowed time window, the container continues to run but doesn't serve queries until the billing endpoint is restored. The connection is attempted 10 times at the same time interval of 10 to 15 minutes. If it can't connect to the billing endpoint within the 10 tries, the container stops serving requests.
+### Billing & Costs
+Running a Cognitive Service in a container doesn't mean that you don't need an Azure Resource or the containers needs connectivity to the endpoint in Azure. 
 
+The container needs to reports it usage about every 10 to 15 minutes. [The costs](https://azure.microsoft.com/pricing/details/cognitive-services/?&WT.mc_id=aiml-12167-heboelma) for using the service in a container is the same as using the endpoint in Azure. 
+
+If the container doesn't connect to Azure within the allowed time window, the container continues to run but doesn't serve queries until the billing endpoint is restored. The connection is attempted 10 times at the same time interval of 10 to 15 minutes. If it can't connect to the billing endpoint within the 10 tries, the container stops serving requests.
 
 ## How to use Cognitive Services in containers
-*Here we zoom in how to use the containers*
+The use of the services in containers is exactly the same as if you would use them in Azure. The deployment of the container is the part tahat takes a bit of planning and research. The services are shipped in Docker Containers. This means that the containers can be deployed to any Docker compatible platform. This can be your local machine running Docker Desktop or a fully scalable Kubernetes installation in your on premise data center.
 
-### The different options
-*Over view of the different options*
 
 ### Generenic workflow
 - Create the resource in Azure
 - Get the endpoint 
-- Get the API Key
+- Retrieve the API Key
 - Find the container for the service
 - Deploy the container
-- Use the container endpoint as you would use the api resource
+- Use the container endpoint as you would use the API resource
 
 Optional you can mount your own storage and connect [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview?WT.mc_id=aiml-12167-heboelma).
-
-
-
 
 
 ## Tutorial: Run a Text to Speech container in an Azure Container Instance.
