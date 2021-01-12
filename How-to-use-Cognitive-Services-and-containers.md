@@ -167,7 +167,7 @@ To do this you first need to retrieve the url for the container. This can be don
 ```
 az container show --name speechcontainer --resource-group demo_rg --query ipAddress.fqdn -o json
 ```
-Navigate to the URL on port 5000. The url should look like this: *http://{container-name}.{region}.azurecontainer.io:5000/*
+Navigate to the URL on port 5000. The url should look like this: *http://{dns-name-label}.{region}.azurecontainer.io:5000/*
 
 If everything went well you should see a screen like this:
 ![Homepage of a Cognitive Service Speech Container](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/container_is_running.png)
@@ -175,6 +175,35 @@ If everything went well you should see a screen like this:
 
 
 ### 5. Submit your first task
+The Text to Speech service in the container is a REST endpoint. To use it we would need to create a POST request. There are many ways to do a POST request. For our tutorial we are going to use Visual Studio Code to do this. 
+
+**Requirements**:
+- [Download](https://code.visualstudio.com/?WT.mc_id=aiml-12167-heboelma) and Install Visual Studio Code
+- Install a plugin called [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client&WT.mc_id=aiml-12167-heboelma)
+
+If you have the Visual Studio Code with th REST Client installed create a file call: rest.http and copy past the code below in the file.
+
+```
+POST http://<dns-name-label>.<region>.azurecontainer.io:5000/speech/synthesize/cognitiveservices/v1  HTTP/1.1
+Content-Type: application/ssml+xml
+X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm
+Accept: audio/*
+
+<speak version="1.0" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        The future we invent is a choice we make. 
+        Not something that just happens.
+    </voice>
+</speak>
+```
+- Change the name of the URL to the URL of your ACI.
+- Next click on the Send Request link (just above the URL)
+
+On the right side of VS Code you should see the response of the API. In the top right corner you see "Save Response Body" click on the button and save the response as a .wav file. Now you can use any media player to play the response.
+
+
+
+
 
 
 
