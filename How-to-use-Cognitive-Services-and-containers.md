@@ -201,7 +201,7 @@ Accept: audio/*
 
 On the right side of VS Code you should see the response of the API. In the top right corner you see "Save Response Body" click on the button and save the response as a .wav file. Now you can use any media player to play the response.
 
-
+![Visual Studio Code REST Call](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/vscode_api_response.png)
 
 
 
