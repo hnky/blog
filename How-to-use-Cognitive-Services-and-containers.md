@@ -119,7 +119,16 @@ az cognitiveservices account show --name speech-resource --resource-group demo_r
 az cognitiveservices account keys list --name speech-resource --resource-group demo_rg
 ```
 
-
+### 3. Get the endpoint & API Key
+```
+az container create 
+    --resource-group demo_rg \
+    --name speechcontainer \
+    --memory 2 --cpu 1 \
+    --ports 80 \
+    --image mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest \
+    --environment-variables Eula=accept Billing=<insert endpoint> ApiKey=<insert apikey>
+```
 
 
 
