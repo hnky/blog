@@ -92,6 +92,12 @@ Text Analytics
 
 Optional you can mount your own storage and connect [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)?WT.mc_id=aiml-12167-heboelma.
 
+## Demo setting up a Speech API Container
+
+If you don’t have an Azure subscription you can get $200 credit for the first month.
+
+You can create everything using the portal, but you can also use the Azure CLI for this. If you don' t have the Azure C installed you can install it using pip.
+
 
 ### 1. Create a resource group
 ```
@@ -133,6 +139,16 @@ az container create
         Billing=<insert endpoint> 
         ApiKey=<insert apikey>
 ```
+
+
+### 4. Check if the endpoint is running
+
+
+
+
+
+### 5. Submit your first task
+
 
 
 
