@@ -143,8 +143,12 @@ az container create
 
 ### 4. Check if the endpoint is running
 
-
-
+First retrieve the url for the container with the command below:
+```
+az container show --name speechcontainer --resource-group demo_rg --query ipAddress.fqdn -o json
+```
+Navigate to that url on port 5000. The url should look like this: *http://<container-name>.<region>.azurecontainer.io:5000/*
+    
 
 
 ### 5. Submit your first task
