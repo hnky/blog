@@ -92,11 +92,11 @@ Text Analytics
 
 Optional you can mount your own storage and connect [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview?WT.mc_id=aiml-12167-heboelma).
 
-## Demo setting up a Speech API Container
 
-If you don’t have an [Azure subscription](https://azure.microsoft.com/en-us/free/?WT.mc_id=aiml-12167-heboelma) you can get $200 credit for the first month.
+## Tutorial run a Text to Speech container in an Azure Container Instance.
+In this tutotial we are going to run a Cognitive Service Speech container in an Azure Container Instance and use the REST api to convert text into speech.
 
-You can create everything using the portal, but you can also use the Azure CLI for this. If you don' t have the Azure C installed you can install it using pip.
+To run the code below you need an Azure Subscription. if you don’t have an [Azure subscription](https://azure.microsoft.com/free/?WT.mc_id=aiml-12167-heboelma) you can get $200 credit for the first month. And have the [Azure command-line interface](https://docs.microsoft.com/cli/azure/what-is-azure-cli?WT.mc_id=aiml-12167-heboelma) installed. If you don't have the Azure CLI installed [follow this tutorial](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?WT.mc_id=aiml-12167-heboelma).
 
 
 ### 1. Create a resource group
@@ -104,6 +104,7 @@ You can create everything using the portal, but you can also use the Azure CLI f
 Create a resource group
 az group create --name demo_rg --location westeurope
 ```
+
 
 ### 2. Create Cognitive Service resource
 ```
