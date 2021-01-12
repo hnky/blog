@@ -76,6 +76,8 @@ LUIS
 Text Analytics
 
 
+
+
 ## How to use Cognitive Services in containers
 *Here we zoom in how to use the containers*
 
@@ -93,20 +95,26 @@ Text Analytics
 Optional you can mount your own storage and connect [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview?WT.mc_id=aiml-12167-heboelma).
 
 
-## Tutorial run a Text to Speech container in an Azure Container Instance.
+
+
+
+## Tutorial: Run a Text to Speech container in an Azure Container Instance.
 In this tutotial we are going to run a Cognitive Service Speech container in an Azure Container Instance and use the REST api to convert text into speech.
 
 To run the code below you need an Azure Subscription. if you don’t have an [Azure subscription](https://azure.microsoft.com/free/?WT.mc_id=aiml-12167-heboelma) you can get $200 credit for the first month. And have the [Azure command-line interface](https://docs.microsoft.com/cli/azure/what-is-azure-cli?WT.mc_id=aiml-12167-heboelma) installed. If you don't have the Azure CLI installed [follow this tutorial](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?WT.mc_id=aiml-12167-heboelma).
 
 
 ### 1. Create a resource group
+Everything in Azure always start with creating a Resource Group. A resource group is a resource that holds related resources for an Azure solution.
+
+To create a resource group using the CLI you have to specify 2 parameters, the name of the group and the location where this group is deployed.
 ```
-Create a resource group
 az group create --name demo_rg --location westeurope
 ```
 
-
 ### 2. Create Cognitive Service resource
+The next resource that needs to be created is a Cognitive Services. To create this resource we need to specify a few parameters. Besides the name and resource group, you need to specify the kind of cognitive service you want to create. For our tutorial we are creating a 'SpeechServices' service.
+
 ```
 az cognitiveservices account create \
     --name speech-resource \
@@ -118,15 +126,23 @@ az cognitiveservices account create \
 ```
 
 ### 3. Get the endpoint & API Key
+If step 1 and 2 are successfully deployed we can extract the properties we need for when we are going to run the container in the next step. The 2 properties we need are the endpoint URL and the API key. The speech service in the container is using these properties to connect to Azure every 15 minutes to send the billing information.
+
+To retieve endpoint:
 ```
-az cognitiveservices account show --name speech-resource --resource-group demo_rg
+az cognitiveservices account show --name speech-resource --resource-group demo_rg  --query properties.endpoint -o json
 ```
 
+To retieve the API keys:
 ```
 az cognitiveservices account keys list --name speech-resource --resource-group demo_rg
 ```
 
-### 3. Get the endpoint & API Key
+### 3. Deploy the container in an ACI
+One of the easiest ways to run a container is to use [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/?WT.mc_id=aiml-12167-heboelma). With one command in the Azure CLI you can deploy a container and make it accessible for the everyone. 
+
+To create an ACI it take a few parameters. If you want your ACI to be accessible from the internet you need to specify the parameter: '--dns-name-label'. The url for the ACI will look like this: http://{dns-name-label}.{region}.azurecontainer. The dns-name-label property needs to be unique.
+
 ```
 az container create 
     --resource-group demo_rg \
@@ -140,6 +156,8 @@ az container create
         Billing=<insert endpoint> 
         ApiKey=<insert apikey>
 ```
+
+The deployment of the container takes a few minutes.
 
 
 ### 4. Validate that a container is running
