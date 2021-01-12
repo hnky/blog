@@ -203,10 +203,12 @@ On the right side of VS Code you should see the response of the API. In the top 
 
 ![Visual Studio Code REST Call](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/vscode_api_response.png)
 
+## Learn more
 
+### MS Learn
+Microsoft Learn is a free, online training platform that provides interactive learning for Microsoft products and more. 
 
-
-
+For this blog we have created a custom [Collection of Learn Modules](https://aka.ms/ai/learn/cognitive-containers) covering all the topics in depth.
 
 
 
