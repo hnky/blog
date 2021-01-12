@@ -151,7 +151,7 @@ az container show --name speechcontainer --resource-group demo_rg --query ipAddr
 Navigate to the URL on port 5000. The url should look like this: *http://<container-name>.<region>.azurecontainer.io:5000/*
 
 You will should see a screen like this:
-![https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/container_is_running.png]()
+![Homepage of a Cognitive Service Speech Container](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/container_is_running.png)
    
 
 
