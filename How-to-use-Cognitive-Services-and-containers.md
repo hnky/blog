@@ -203,50 +203,24 @@ On the right side of VS Code you should see the response of the API. In the top 
 
 ![Visual Studio Code REST Call](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/vscode_api_response.png)
 
-## Learn more
+## On Learn more
 
-### MS Learn
+### Microsoft Learn
 Microsoft Learn is a free, online training platform that provides interactive learning for Microsoft products and more. 
 
 For this blog we have created a custom [Collection of Learn Modules](https://aka.ms/ai/learn/cognitive-containers) covering all the topics in depth.
 
-
-
-## Further reading
+### Blogs and articles
 - [Getting started with Azure Cognitive Services in containers](https://azure.microsoft.com/blog/getting-started-with-azure-cognitive-services-in-containers/?WT.mc_id=aiml-12167-heboelma)
 - [Bringing AI to the edge](https://azure.microsoft.com/blog/bringing-ai-to-the-edge/?WT.mc_id=aiml-12167-heboelma)
 - [Running Cognitive Service containers](https://azure.microsoft.com/blog/running-cognitive-service-containers/?WT.mc_id=aiml-12167-heboelma)
 
-## Learn more on Microsoft Docs
+### On Microsoft Docs
 
-### Services
-- [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)
-
-### General
-- [x](https://docs.microsoft.com/azure/cognitive-services/containers?WT.mc_id=aiml-12167-heboelma)
-- [x](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?WT.mc_id=aiml-12167-heboelma)
-- [x](https://docs.microsoft.com/azure/cognitive-services/containers/container-reuse-recipe?WT.mc_id=aiml-12167-heboelma)
-- [x](https://docs.microsoft.com/azure/cognitive-services/containers/azure-container-instance-recipe?WT.mc_id=aiml-12167-heboelma)
-- [x](https://docs.microsoft.com/azure/cognitive-services/containers/azure-kubernetes-recipe?WT.mc_id=aiml-12167-heboelma)
-- [x](https://docs.microsoft.com/azure/cognitive-services/containers/docker-compose-recipe?WT.mc_id=aiml-12167-heboelma)
-- [x](https://docs.microsoft.com/azure/cognitive-services/containers/container-faq?WT.mc_id=aiml-12167-heboelma)
-
-### Usefull services
-
-
-
-
-
-
--------
-## Internal notes
-
-Henk: Demos use Azure CLI
-
-
-## Todo:
-- Add tracking
-
-
-
-
+- [Azure Cognitive Services containers](https://docs.microsoft.com/azure/cognitive-services/containers?WT.mc_id=aiml-12167-heboelma)
+- [Azure Cognitive Services containers Support](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?WT.mc_id=aiml-12167-heboelma)
+- [Create containers for reuse](https://docs.microsoft.com/azure/cognitive-services/containers/container-reuse-recipe?WT.mc_id=aiml-12167-heboelma)
+- [Deploy and run container on Azure Container Instance](https://docs.microsoft.com/azure/cognitive-services/containers/azure-container-instance-recipe?WT.mc_id=aiml-12167-heboelma)
+- [Deploy the Text Analytics language detection container to Azure Kubernetes Service](https://docs.microsoft.com/azure/cognitive-services/containers/azure-kubernetes-recipe?WT.mc_id=aiml-12167-heboelma)
+- [Use Docker Compose to deploy multiple containers](https://docs.microsoft.com/azure/cognitive-services/containers/docker-compose-recipe?WT.mc_id=aiml-12167-heboelma)
+- [Azure Cognitive Services containers frequently asked questions (FAQ)](https://docs.microsoft.com/azure/cognitive-services/containers/container-faq?WT.mc_id=aiml-12167-heboelma)
