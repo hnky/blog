@@ -1,6 +1,6 @@
 # How to use Cognitive Services and containers
 
-*intro*
+In this blog we are going to take a look at how we can run a selection Cognitive Services in Docker compatible containers. This option of using these services can come in handy if you run into scenarios where your application can not connect to the cloud all the time or if you need more control over your data.
 
 ## What are Cognitive Services
 Azure Cognitive Services are cloud-based services that expose AI models through a REST API. These services enable you to add cognitive features, like object detection and speech recognition to your applications without having data science skills. By using the provided SDKs in the programming language of your choice you can create application that can see (Computer Vision), hear (Speech), speak (Speech), understand (Language), and even make decisions (Decision).
@@ -36,7 +36,7 @@ Provide customers the ability to scale for high throughput and low latency requi
 **Scalability:** With the ever growing popularity of containerization and container orchestration software, such as Kubernetes; scalability is at the forefront of technological advancements. Building on a scalable cluster foundation, application development caters to high availability.
 
 
-### Which services are availabe
+### Which services are available
 Container support is currently available for a subset of Azure Cognitive Services, including parts of:
 
 | Group | Service | Documentation | Preview |
@@ -57,19 +57,11 @@ Container support is currently available for a subset of Azure Cognitive Service
 | | Sentiment analysis | [Documentation](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers?tabs=sentiment&WT.mc_id=aiml-12167-heboelma) |
 | Face | Face |  [Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-how-to-install-containers?&WT.mc_id=aiml-12167-heboelma)
 
-
-### Billing & Costs
-Running a Cognitive Service in a container doesn't mean that you don't need an Azure Resource or the containers needs connectivity to the endpoint in Azure. 
-
-The container needs to reports it usage about every 10 to 15 minutes. [The costs](https://azure.microsoft.com/pricing/details/cognitive-services/?&WT.mc_id=aiml-12167-heboelma) for using the service in a container is the same as using the endpoint in Azure. 
-
-If the container doesn't connect to Azure within the allowed time window, the container continues to run but doesn't serve queries until the billing endpoint is restored. The connection is attempted 10 times at the same time interval of 10 to 15 minutes. If it can't connect to the billing endpoint within the 10 tries, the container stops serving requests.
-
 ## How to use Cognitive Services in containers
 The use of the services in containers is exactly the same as if you would use them in Azure. The deployment of the container is the part tahat takes a bit of planning and research. The services are shipped in Docker Containers. This means that the containers can be deployed to any Docker compatible platform. This can be your local machine running Docker Desktop or a fully scalable Kubernetes installation in your on premise data center.
 
 
-### Generenic workflow
+### Generic workflow
 - Create the resource in Azure
 - Get the endpoint 
 - Retrieve the API Key
