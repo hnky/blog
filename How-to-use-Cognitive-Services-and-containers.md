@@ -1,8 +1,7 @@
 # How to use Cognitive Services and containers
 
-In this blog we are going to take a look at how we can run a selection Cognitive Services in Docker compatible containers. This option of using these services can come in handy if you run into scenarios where your application can not connect to the cloud all the time or if you need more control over your data.
+In this blog we are going to take a look at how we can run a selection of [Cognitive Services](https://azure.microsoft.com/en-us/overview/ai-platform/dev-resources/?OCID=AID3029145) in Docker compatible containers. This option of using these services can come in handy if you run into scenarios where your application can not connect to the cloud all the time or if you need more control over your data.
 
-[Learn more](https://azure.microsoft.com/en-us/overview/ai-platform/dev-resources/?OCID=AID3029145)
 
 ## What are Cognitive Services
 Azure Cognitive Services are cloud-based services that expose AI models through a REST API. These services enable you to add cognitive features, like object detection and speech recognition to your applications without having data science skills. By using the provided SDKs in the programming language of your choice you can create application that can see (Computer Vision), hear (Speech), speak (Speech), understand (Language), and even make decisions (Decision).
