@@ -2,6 +2,8 @@
 
 In this blog we are going to take a look at how we can run a selection Cognitive Services in Docker compatible containers. This option of using these services can come in handy if you run into scenarios where your application can not connect to the cloud all the time or if you need more control over your data.
 
+[Learn more](https://azure.microsoft.com/en-us/overview/ai-platform/dev-resources/?OCID=AID3029145)
+
 ## What are Cognitive Services
 Azure Cognitive Services are cloud-based services that expose AI models through a REST API. These services enable you to add cognitive features, like object detection and speech recognition to your applications without having data science skills. By using the provided SDKs in the programming language of your choice you can create application that can see (Computer Vision), hear (Speech), speak (Speech), understand (Language), and even make decisions (Decision).
 
@@ -178,6 +180,10 @@ On the right side of VS Code you should see the response of the API. In the top 
 ![Visual Studio Code REST Call](https://raw.githubusercontent.com/hnky/blog/master/images/cog_con/vscode_api_response.png)
 
 ## On Learn more
+
+- [Get skilled on AI and ML – on your terms with Azure AI](https://techcommunity.microsoft.com/t5/azure-ai/get-skilled-on-ai-and-ml-on-your-terms-with-azure-ai/ba-p/2103678)
+- [AI Developer page](https://azure.microsoft.com/en-us/overview/ai-platform/dev-resources/?OCID=AID3029145)
+- [Azure AI Essentials video #2](https://www.youtube.com/watch?v=qJGRd34Hnl0&feature=youtu.be)
 
 ### Microsoft Learn
 Microsoft Learn is a free, online training platform that provides interactive learning for Microsoft products and more. 
